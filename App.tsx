@@ -16,6 +16,7 @@ function HomeScreen({ navigation }) {
 
 function DMScreen({ navigation }) {
   return (
+    // Penis
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>It go down in the DM</Text>
       <Button
