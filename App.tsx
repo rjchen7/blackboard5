@@ -1,19 +1,26 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import ProfileScreen from './ProfileScreen';
 import MainTabScreen from './MainTabScreen';
+import DrawerContent from './DrawerContent';
+import PotentialRoommates from './PotentialRoommates';
+import PotentialHousing from './PotentialHousing';
 
 const Drawer = createDrawerNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName='Home'>
-        <Drawer.Screen name='Home' component={MainTabScreen} />
+      <Drawer.Navigator
+        initialRouteName='Home'
+        drawerContent={(props) => <DrawerContent {...props} />}>
+        <Drawer.Screen name='HomeDrawer' component={MainTabScreen} />
+        <Drawer.Screen
+          name='PotentialRoommates'
+          component={PotentialRoommates}
+        />
+        <Drawer.Screen name='PotentialHousing' component={PotentialHousing} />
         {/* <Drawer.Screen name='DM' component={DMStackScreen} /> */}
       </Drawer.Navigator>
     </NavigationContainer>
