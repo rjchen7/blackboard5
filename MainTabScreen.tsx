@@ -1,11 +1,15 @@
 import React, { FunctionComponent } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  StackScreenProps,
+} from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import HomeScreen from './HomeScreen';
 import DMScreen from './DMScreen';
-import Icon from 'react-native-vector-icons/Ionicons';
 import ProfileScreen from './ProfileScreen';
+import { NavigationProp } from '@react-navigation/native';
 
 const HomeStack = createStackNavigator();
 const DMStack = createStackNavigator();
@@ -55,7 +59,7 @@ const MainTabScreen: FunctionComponent = () => {
 
 export default MainTabScreen;
 
-const HomeStackScreen = ({ navigation }) => (
+const HomeStackScreen: FunctionComponent<any> = ({ navigation }) => (
   <HomeStack.Navigator
     screenOptions={{
       headerStyle: { backgroundColor: 'black' },

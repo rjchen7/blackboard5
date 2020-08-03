@@ -12,6 +12,7 @@ import {
 } from 'react-native-paper';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import PotentialRoommates from './PotentialRoommates';
 
 const DrawerContent = (props) => {
   // creating state isDarkTheme
@@ -21,6 +22,8 @@ const DrawerContent = (props) => {
   const toggleTheme = () => {
     setIsDarkTheme(!isDarkTheme);
   };
+
+  const [modalOpen, setModalOpen] = React.useState(false);
 
   return (
     <View style={{ flex: 1 }}>
@@ -37,14 +40,14 @@ const DrawerContent = (props) => {
               />
               <View style={{ marginLeft: 15, flexDirection: 'column' }}>
                 <Title style={styles.title}>Andy Wu</Title>
-                <Caption style={styles.caption}>@faggot</Caption>
+                <Caption style={styles.caption}>@loser</Caption>
               </View>
             </View>
 
             <View style={styles.row}>
               <View style={styles.section}>
                 <Paragraph style={[styles.paragraph, styles.caption]}>
-                  wo gay
+                  wo fucking dumb
                 </Paragraph>
                 <Caption style={styles.caption}>penis</Caption>
               </View>
@@ -57,6 +60,14 @@ const DrawerContent = (props) => {
               </View>
             </View>
           </View>
+
+          <PotentialRoommates
+            modalOpen={modalOpen}
+            onClose={() => {
+              setModalOpen(false);
+            }}
+          />
+
           <Drawer.Section style={styles.drawerSection}>
             <DrawerItem
               icon={({ color, size }) => (
@@ -68,7 +79,7 @@ const DrawerContent = (props) => {
               )}
               label='Potential Roommates'
               onPress={() => {
-                props.navigation.navigate('PotentialRoommates');
+                setModalOpen(true);
               }}
             />
             <DrawerItem
@@ -76,9 +87,7 @@ const DrawerContent = (props) => {
                 <Icon name='bed-empty' color={color} size={size} />
               )}
               label='Potential Housing'
-              onPress={() => {
-                props.navigation.navigate('PotentialHousing');
-              }}
+              onPress={() => {}}
             />
             <DrawerItem
               icon={({ color, size }) => (
@@ -86,7 +95,7 @@ const DrawerContent = (props) => {
               )}
               label='Settings'
               onPress={() => {
-                props.navigation.navigate('');
+                props.navigation.navigate('SettingsScreen');
               }}
             />
             <DrawerItem
@@ -95,7 +104,7 @@ const DrawerContent = (props) => {
               )}
               label='Support'
               onPress={() => {
-                props.navigation.navigate('');
+                props.navigation.navigate('SupportScreen');
               }}
             />
           </Drawer.Section>

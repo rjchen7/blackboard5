@@ -6,6 +6,8 @@ import MainTabScreen from './MainTabScreen';
 import DrawerContent from './DrawerContent';
 import PotentialRoommates from './PotentialRoommates';
 import PotentialHousing from './PotentialHousing';
+import SupportScreen from './SupportScreen';
+import SettingsScreen from './SettingsScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -21,7 +23,8 @@ function App() {
           component={PotentialRoommates}
         />
         <Drawer.Screen name='PotentialHousing' component={PotentialHousing} />
-        {/* <Drawer.Screen name='DM' component={DMStackScreen} /> */}
+        <Drawer.Screen name='SettingsScreen' component={SettingsScreen} />
+        <Drawer.Screen name='SupportScreen' component={SupportScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
