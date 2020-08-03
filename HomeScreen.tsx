@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import { Container, Content, Icon } from 'native-base';
-import DMScreen from './DMScreen';
+// import DMScreen from './DMScreen';
 import ScrollComponent from './components/ScrollComponent';
 
 const styles = StyleSheet.create({
@@ -11,7 +11,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomeScreen = () => {
+// the reason it is navigation.navigate('DM') is because in the DMStackScreen component it is named DM
+
+const HomeScreen = ({ navigation }) => {
   return (
     <Container style={styles.container}>
       <Content>
@@ -21,6 +23,7 @@ const HomeScreen = () => {
           Thumb={require('./assets/trick2g.jpg')}
           ImageUri={require('./assets/eltrollo.jpeg')}
           text=' BALLSACK!'
+          goToDM={() => navigation.navigate('DM')}
         />
         <ScrollComponent
           User='Rue Grandpa'
@@ -28,6 +31,7 @@ const HomeScreen = () => {
           Thumb={require('./assets/thegang.jpg')}
           ImageUri={require('./assets/unclesam.jpeg')}
           text=' There is a new fucking sheriff in town.'
+          goToDM={() => navigation.navigate('DM')}
         />
         <ScrollComponent
           User='2 Chainz'
@@ -35,6 +39,7 @@ const HomeScreen = () => {
           Thumb={require('./assets/2chainz.jpg')}
           ImageUri={require('./assets/imdifferent.jpeg')}
           text=' Then I put a fat rabbit on a Craftmatic!'
+          goToDM={() => navigation.navigate('DM')}
         />
       </Content>
     </Container>

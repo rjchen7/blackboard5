@@ -12,7 +12,6 @@ import ProfileScreen from './ProfileScreen';
 import { NavigationProp } from '@react-navigation/native';
 
 const HomeStack = createStackNavigator();
-const DMStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen: FunctionComponent = () => {
@@ -35,7 +34,7 @@ const MainTabScreen: FunctionComponent = () => {
       />
       <Tab.Screen
         name='DM'
-        component={DMStackScreen}
+        component={DMScreen}
         options={{
           tabBarLabel: 'DMs',
           tabBarIcon: ({ color }) => (
@@ -85,28 +84,28 @@ const HomeStackScreen: FunctionComponent<any> = ({ navigation }) => (
   </HomeStack.Navigator>
 );
 
-const DMStackScreen = ({ navigation }) => (
-  <DMStack.Navigator
-    screenOptions={{
-      headerStyle: { backgroundColor: 'black' },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    }}>
-    <DMStack.Screen
-      name='DM'
-      component={DMScreen}
-      options={{
-        title: 'Blackboard',
-        headerLeft: () => (
-          <Icon.Button
-            name='ios-menu'
-            size={25}
-            backgroundColor='black'
-            onPress={() => navigation.openDrawer()}></Icon.Button>
-        ),
-      }}
-    />
-  </DMStack.Navigator>
-);
+// const DMStackScreen = ({ navigation }) => (
+//   <DMStack.Navigator
+//     screenOptions={{
+//       headerStyle: { backgroundColor: 'black' },
+//       headerTintColor: '#fff',
+//       headerTitleStyle: {
+//         fontWeight: 'bold',
+//       },
+//     }}>
+//     <DMStack.Screen
+//       name='DM'
+//       component={DMScreen}
+//       options={{
+//         title: 'Blackboard',
+//         headerLeft: () => (
+//           <Icon.Button
+//             name='ios-menu'
+//             size={25}
+//             backgroundColor='black'
+//             onPress={() => navigation.openDrawer()}></Icon.Button>
+//         ),
+//       }}
+//     />
+//   </DMStack.Navigator>
+// );

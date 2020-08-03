@@ -18,13 +18,13 @@ function App() {
         initialRouteName='Home'
         drawerContent={(props) => <DrawerContent {...props} />}>
         <Drawer.Screen name='HomeDrawer' component={MainTabScreen} />
-        <Drawer.Screen
+        {/* <Drawer.Screen
           name='PotentialRoommates'
           component={PotentialRoommates}
         />
         <Drawer.Screen name='PotentialHousing' component={PotentialHousing} />
         <Drawer.Screen name='SettingsScreen' component={SettingsScreen} />
-        <Drawer.Screen name='SupportScreen' component={SupportScreen} />
+        <Drawer.Screen name='SupportScreen' component={SupportScreen} /> */}
       </Drawer.Navigator>
     </NavigationContainer>
   );
