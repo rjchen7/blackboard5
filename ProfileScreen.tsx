@@ -33,6 +33,7 @@ const ProfileScreen = ({ navigation }) => {
                 style={{ width: 75, height: 75, borderRadius: 37.5 }}
               ></Image>
             </View>
+            <View style={{ flex: 3 }}></View>
           </View>
         </View>
       </Content>
