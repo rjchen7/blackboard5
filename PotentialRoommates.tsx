@@ -9,6 +9,9 @@ import {
 } from 'react-native';
 import Category from './components/Category';
 
+// set modal height to a lower height, transparent prop, slide up animation
+// bimbo
+
 const PotentialRoommates: FunctionComponent<{
   modalOpen: boolean;
   onClose: () => any;
