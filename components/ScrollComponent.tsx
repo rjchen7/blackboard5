@@ -17,15 +17,29 @@ import {
   Icon,
 } from 'native-base';
 
+// import DMScreen from '../DMScreen';
+import { accessibilityProps } from 'react-native-paper/lib/typescript/src/components/MaterialCommunityIcon';
+import { useNavigation } from '@react-navigation/native';
+
 type Props = {
   User: string;
   Date: string;
   Thumb: ImageSourcePropType;
   ImageUri: ImageSourcePropType;
   text: string;
+  goToDM: () => any;
 };
 
-const ScrollComponent = ({ User, Date, Thumb, ImageUri, text }: Props) => {
+const ScrollComponent = ({
+  User,
+  Date,
+  Thumb,
+  ImageUri,
+  text,
+  goToDM,
+}: Props) => {
+  // const navigation = useNavigation();
+
   return (
     <Card>
       <CardItem>
@@ -45,7 +59,7 @@ const ScrollComponent = ({ User, Date, Thumb, ImageUri, text }: Props) => {
           <Button transparent>
             <Icon name='ios-add' style={{ color: 'black' }}></Icon>
           </Button>
-          <Button transparent>
+          <Button transparent onPress={() => goToDM()}>
             <Icon name='ios-paper-plane' style={{ color: 'black' }}></Icon>
           </Button>
           <Button transparent>
