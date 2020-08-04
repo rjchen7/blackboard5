@@ -1,16 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import {
-  Container,
-  Content,
-  Header,
-  Left,
-  Body,
-  Right,
-  Button,
-  Image,
-} from 'native-base';
+import { Button } from 'native-base';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -20,14 +11,15 @@ const ProfileScreen = ({ navigation }) => {
   //   setActive(index);
   // };
   return (
-    <Container style={{ flex: 1, backgroundColor: 'white' }}>
-      <Content>
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
+      <View>
         <View style={{ marginLeft: 15 }}>
           <View style={{ flexDirection: 'row' }}>
             <View style={{ flex: 1, alignItems: 'center' }}>
               <Image
                 source={require('./assets/boomer2g.png')}
-                style={{ width: 75, height: 75, borderRadius: 37.5 }}></Image>
+                style={{ width: 75, height: 75, borderRadius: 37.5 }}
+              ></Image>
             </View>
             <Button
               bordered
@@ -37,7 +29,8 @@ const ProfileScreen = ({ navigation }) => {
                 marginLeft: 10,
                 justifyContent: 'center',
                 height: 30,
-              }}>
+              }}
+            >
               <Text>Edit Profile</Text>
             </Button>
           </View>
@@ -50,7 +43,8 @@ const ProfileScreen = ({ navigation }) => {
               justifyContent: 'space-around',
               borderTopWidth: 1,
               borderTopColor: '#eae5e5',
-            }}>
+            }}
+          >
             <Button transparent>
               <Icon name='ios-clipboard'></Icon>
             </Button>
@@ -62,8 +56,8 @@ const ProfileScreen = ({ navigation }) => {
             </Button>
           </View>
         </View>
-      </Content>
-    </Container>
+      </View>
+    </View>
   );
 };
 
