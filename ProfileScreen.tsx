@@ -14,10 +14,10 @@ import {
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 
 const ProfileScreen = ({ navigation }) => {
-  const [active, setActive] = React.useState(0);
-  const segmentClicked = (index: { index: number }) => {
-    setActive(index);
-  };
+  // const [active, setActive] = React.useState(0);
+  // const segmentClicked = (index: { index: number }) => {
+  //   setActive(index);
+  // };
   return (
     <Container style={{ flex: 1, backgroundColor: 'white' }}>
       <Header>
@@ -36,7 +36,7 @@ const ProfileScreen = ({ navigation }) => {
           <View style={{ flexDirection: 'row' }}>
             <View style={{ flex: 1, alignItems: 'center' }}>
               <Image
-                source={require('./assets/trick2g.jpg')}
+                source={require('./assets/boomer2g.png')}
                 style={{ width: 75, height: 75, borderRadius: 37.5 }}
               ></Image>
             </View>
@@ -77,7 +77,7 @@ const ProfileScreen = ({ navigation }) => {
               borderTopColor: '#eae5e5',
             }}
           >
-            <Button transparent onPress={() => segmentClicked(0)}>
+            <Button transparent>
               <Icon name='ios-clipboard'></Icon>
             </Button>
             <Button transparent>

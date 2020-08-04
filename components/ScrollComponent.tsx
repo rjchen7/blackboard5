@@ -28,7 +28,6 @@ type Props = {
   ImageUri: ImageSourcePropType;
   text: string;
   goToDM: () => any;
-  goToRoommate: () => any;
 };
 
 const ScrollComponent = ({
@@ -38,7 +37,6 @@ const ScrollComponent = ({
   ImageUri,
   text,
   goToDM,
-  goToRoommate,
 }: Props) => {
   // const navigation = useNavigation();
 
@@ -58,7 +56,7 @@ const ScrollComponent = ({
       </CardItem>
       <CardItem style={{ height: 45 }}>
         <Left>
-          <Button transparent onPress={() => goToRoommate()}>
+          <Button transparent>
             <Icon name='ios-add' style={{ color: 'black' }}></Icon>
           </Button>
           <Button transparent onPress={() => goToDM()}>

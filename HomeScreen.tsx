@@ -20,7 +20,7 @@ const HomeScreen = ({ navigation }) => {
         <ScrollComponent
           User='El Truco'
           Date='August 1, 2021'
-          Thumb={require('./assets/trick2g.jpg')}
+          Thumb={require('./assets/boomer2g.png')}
           ImageUri={require('./assets/eltrollo.jpeg')}
           text=' BALLSACK!'
           goToDM={() => navigation.navigate('DM')}
@@ -36,7 +36,7 @@ const HomeScreen = ({ navigation }) => {
         <ScrollComponent
           User='2 Chainz'
           Date='April 12, 2013'
-          Thumb={require('./assets/2chainz.jpg')}
+          Thumb={require('./assets/2chainz.jpeg')}
           ImageUri={require('./assets/imdifferent.jpeg')}
           text=' Then I put a fat rabbit on a Craftmatic!'
           goToDM={() => navigation.navigate('DM')}
