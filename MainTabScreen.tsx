@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import HomeStackScreen from './HomeStackScreen';
 import DMStackScreen from './DMStackScreen';
-import ProfileScreen from './ProfileScreen';
+import ProfileStackScreen from './ProfileStackScreen';
 import { NavigationProp } from '@react-navigation/native';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -43,7 +43,7 @@ const MainTabScreen: FunctionComponent = () => {
       />
       <Tab.Screen
         name='Profile'
-        component={ProfileScreen}
+        component={ProfileStackScreen}
         options={{
           tabBarLabel: 'Profile',
           tabBarIcon: ({ color }) => (

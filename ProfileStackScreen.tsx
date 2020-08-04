@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
   Container,
@@ -9,10 +9,39 @@ import {
   Body,
   Right,
   Button,
-  Image,
 } from 'native-base';
 
 import Icon from 'react-native-vector-icons/Ionicons';
+
+const ProfileStack = createStackNavigator();
+
+const ProfileStackScreen = ({ navigation }) => {
+  return (
+    <ProfileStack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: 'black' },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
+      <ProfileStack.Screen
+        name='DM'
+        component={ProfileScreen}
+        options={{
+          title: 'Blackboard',
+          headerLeft: () => (
+            <Icon.Button
+              name='ios-menu'
+              size={25}
+              backgroundColor='black'
+              onPress={() => navigation.openDrawer()}></Icon.Button>
+          ),
+        }}
+      />
+    </ProfileStack.Navigator>
+  );
+};
 
 const ProfileScreen = ({ navigation }) => {
   // const [active, setActive] = React.useState(0);
@@ -39,6 +68,18 @@ const ProfileScreen = ({ navigation }) => {
                 height: 30,
               }}>
               <Text>Edit Profile</Text>
+            </Button>
+            <Button
+              bordered
+              dark
+              style={{
+                flex: 1,
+                height: 30,
+                marginRight: 10,
+                marginLeft: 5,
+                justifyContent: 'center',
+              }}>
+              <Icon name='ios-settings'></Icon>
             </Button>
           </View>
         </View>
@@ -67,4 +108,10 @@ const ProfileScreen = ({ navigation }) => {
   );
 };
 
-export default ProfileScreen;
+// const styles = StyleSheet.create({
+//   container: {
+
+//   }
+// });
+
+export default ProfileStackScreen;
