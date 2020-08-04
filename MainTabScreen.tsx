@@ -7,7 +7,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import HomeScreen from './HomeScreen';
-import DMScreen from './DMScreen';
+import DMStackScreen from './DMStackScreen';
 import ProfileScreen from './ProfileScreen';
 import { NavigationProp } from '@react-navigation/native';
 
@@ -34,7 +34,7 @@ const MainTabScreen: FunctionComponent = () => {
       />
       <Tab.Screen
         name='DM'
-        component={DMScreen}
+        component={DMStackScreen}
         options={{
           tabBarLabel: 'DMs',
           tabBarIcon: ({ color }) => (
