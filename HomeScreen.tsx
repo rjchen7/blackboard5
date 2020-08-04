@@ -1,17 +1,7 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import { Container, Content, Icon } from 'native-base';
-// import DMScreen from './DMScreen';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { Container, Content } from 'native-base';
 import ScrollComponent from './components/ScrollComponent';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-});
-
-// the reason it is navigation.navigate('DM') is because in the DMStackScreen component it is named DM
 
 const HomeScreen = ({ navigation }) => {
   return (
@@ -46,13 +36,11 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-// const HomeScreen = ({ navigation }) => {
-//   return (
-//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//       <Text>Home Screen</Text>
-//       <Button title='Go to DMs' onPress={() => navigation.navigate('DM')} />
-//     </View>
-//   );
-// };
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+});
 
 export default HomeScreen;

@@ -6,12 +6,11 @@ import {
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import HomeScreen from './HomeScreen';
+import HomeStackScreen from './HomeStackScreen';
 import DMStackScreen from './DMStackScreen';
 import ProfileScreen from './ProfileScreen';
 import { NavigationProp } from '@react-navigation/native';
 
-const HomeStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen: FunctionComponent = () => {
@@ -58,31 +57,31 @@ const MainTabScreen: FunctionComponent = () => {
 
 export default MainTabScreen;
 
-const HomeStackScreen: FunctionComponent<any> = ({ navigation }) => (
-  <HomeStack.Navigator
-    screenOptions={{
-      headerStyle: { backgroundColor: 'black' },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    }}>
-    <HomeStack.Screen
-      name='Home'
-      component={HomeScreen}
-      options={{
-        title: 'Blackboard',
-        headerLeft: () => (
-          <Icon.Button
-            name='ios-menu'
-            size={25}
-            backgroundColor='black'
-            onPress={() => navigation.openDrawer()}></Icon.Button>
-        ),
-      }}
-    />
-  </HomeStack.Navigator>
-);
+// const HomeStackScreen: FunctionComponent<any> = ({ navigation }) => (
+//   <HomeStack.Navigator
+//     screenOptions={{
+//       headerStyle: { backgroundColor: 'black' },
+//       headerTintColor: '#fff',
+//       headerTitleStyle: {
+//         fontWeight: 'bold',
+//       },
+//     }}>
+//     <HomeStack.Screen
+//       name='Home'
+//       component={HomeScreen}
+//       options={{
+//         title: 'Blackboard',
+//         headerLeft: () => (
+//           <Icon.Button
+//             name='ios-menu'
+//             size={25}
+//             backgroundColor='black'
+//             onPress={() => navigation.openDrawer()}></Icon.Button>
+//         ),
+//       }}
+//     />
+//   </HomeStack.Navigator>
+// );
 
 // const DMStackScreen = ({ navigation }) => (
 //   <DMStack.Navigator
