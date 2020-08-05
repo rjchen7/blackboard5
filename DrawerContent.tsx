@@ -23,7 +23,9 @@ const DrawerContent = (props) => {
     setIsDarkTheme(!isDarkTheme);
   };
 
-  const [modalOpen, setModalOpen] = React.useState(false);
+  const [potentialRoommatesOpen, setPotentialRoommatesOpen] = React.useState(
+    false
+  );
 
   return (
     <View style={{ flex: 1 }}>
@@ -62,9 +64,9 @@ const DrawerContent = (props) => {
           </View>
 
           <PotentialRoommates
-            modalOpen={modalOpen}
+            modalOpen={potentialRoommatesOpen}
             onClose={() => {
-              setModalOpen(false);
+              setPotentialRoommatesOpen(false);
             }}
           />
 
