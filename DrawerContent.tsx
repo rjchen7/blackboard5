@@ -81,7 +81,7 @@ const DrawerContent = (props) => {
               )}
               label='Potential Roommates'
               onPress={() => {
-                setModalOpen(true);
+                setPotentialRoommatesOpen(true);
               }}
             />
             <DrawerItem

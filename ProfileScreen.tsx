@@ -1,57 +1,168 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import {
+  View,
+  Text,
+  Dimensions,
+  Image,
+  StyleSheet,
+  SafeAreaView,
+} from 'react-native';
+import { Divider } from 'react-native-elements';
 import { Button } from 'native-base';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
+var images = [
+  require('./assets/rookie.jpeg'),
+  require('./assets/scibowl.jpeg'),
+  require('./assets/cook.jpeg'),
+  require('./assets/crewshot.jpeg'),
+];
+
+var { width, height } = Dimensions.get('window');
+const title = 'Professional Boomer';
+
 const ProfileScreen = ({ navigation }) => {
-  // const [active, setActive] = React.useState(0);
-  // const segmentClicked = (index: { index: number }) => {
-  //   setActive(index);
-  // };
+  const [active, setActive] = React.useState(false);
+
+  const renderSectionOne = () => {
+    return images.map((image, index) => {
+      return (
+        <View key={index} style={[{ width: width / 2 }, { height: width / 2 }]}>
+          <Image
+            source={image}
+            style={{ flex: 1, width: undefined, height: undefined }}></Image>
+        </View>
+      );
+    });
+  };
+
+  const renderSectionTwo = () => {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Text
+          style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 24 }}>
+          Preferences
+        </Text>
+        <Divider style={styles.divider} />
+        <View>
+          <Icon name='ios-clock' size={30}></Icon>
+        </View>
+        <Divider style={styles.divider} />
+        <Text style={styles.name}>{title}</Text>
+        <Text style={styles.desc}>Sleep Day n Nite!</Text>
+        <Divider style={styles.divider} />
+        <View>
+          <Icon name='ios-beer' size={30}></Icon>
+        </View>
+        <Divider style={styles.divider} />
+        <Text style={styles.desc}>I smoke all day.</Text>
+      </SafeAreaView>
+    );
+  };
+
+  const renderSection = () => {
+    if (!active) {
+      return (
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+          {renderSectionOne()}
+        </View>
+      );
+    } else {
+      return <View>{renderSectionTwo()}</View>;
+    }
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'flex-start',
-          marginLeft: 15,
-          marginTop: 20,
-          marginBottom: 20,
-        }}>
-        <Image
-          source={require('./assets/boomer2g.png')}
-          style={{ width: 75, height: 75, borderRadius: 37.5 }}
-        />
-        <Button
-          bordered
-          dark
-          style={{
-            flex: 3,
-            marginLeft: 20,
-            marginRight: 30,
-            justifyContent: 'center',
-            height: 30,
-          }}>
-          <Text>Edit Profile</Text>
-        </Button>
-      </View>
-
       <View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            borderTopWidth: 1,
-            borderTopColor: '#eae5e5',
-          }}>
-          <Icon name='ios-clipboard' onPress={() => {}} />
-          <Icon name='ios-expand' onPress={() => {}} />
-          <Icon name='ios-clock' onPress={() => {}} />
+        <View style={{ paddingTop: 10, paddingLeft: 10, paddingBottom: 10 }}>
+          <View style={{ flexDirection: 'row' }}>
+            <View
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Image
+                source={require('./assets/datway.jpeg')}
+                style={{ width: 75, height: 75, borderRadius: 37.5 }}></Image>
+              <Text style={{ fontWeight: 'bold', paddingTop: 10 }}>
+                Andy Wu
+              </Text>
+            </View>
+            <Button
+              bordered
+              dark
+              style={{
+                flex: 3,
+                marginLeft: 10,
+                justifyContent: 'center',
+                height: 30,
+              }}>
+              <Text>Edit Profile</Text>
+            </Button>
+          </View>
+        </View>
+
+        <View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              borderTopWidth: 1,
+              borderTopColor: '#eae5e5',
+            }}>
+            <Button
+              transparent
+              onPress={() => {
+                setActive(false);
+              }}>
+              <Icon
+                style={[active == false ? { color: 'teal' } : {}]}
+                name='ios-clipboard'
+                size={30}></Icon>
+            </Button>
+            <Button
+              transparent
+              onPress={() => {
+                setActive(true);
+              }}>
+              <Icon
+                name='ios-expand'
+                style={[active == true ? { color: 'teal' } : {}]}
+                size={30}></Icon>
+            </Button>
+          </View>
+          {renderSection()}
         </View>
       </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    // flex: 1,
+    alignItems: 'center',
+  },
+  name: {
+    color: '#5e5e5e',
+    alignSelf: 'flex-start',
+    marginLeft: 30,
+  },
+  desc: {
+    color: '#5e5e5e',
+    alignSelf: 'flex-start',
+    marginTop: 5,
+    marginHorizontal: 30,
+    fontSize: 14,
+  },
+  divider: {
+    backgroundColor: '#c0c0c0',
+    width: width - 60,
+    margin: 20,
+  },
+});
 
 export default ProfileScreen;
