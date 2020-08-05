@@ -6,34 +6,50 @@ import {
   StyleSheet,
   Modal,
   ScrollView,
+  SafeAreaView,
 } from 'react-native';
+
+import Icon from 'react-native-vector-icons/Ionicons';
 import Category from './components/Category';
 
 // set modal height to a lower height, transparent prop, slide up animation
 // bimbo
+// this is a control component, controled by drawer
 
 const PotentialRoommates: FunctionComponent<{
   modalOpen: boolean;
   onClose: () => any;
 }> = (props) => {
   return (
-    <Modal visible={props.modalOpen}>
-      <View style={styles.container}>
+    <Modal visible={props.modalOpen} animationType='slide'>
+      <SafeAreaView style={styles.modalContent}>
+        <Icon
+          style={styles.modalToggle}
+          name='ios-arrow-down'
+          size={24}
+          onPress={() => {
+            // setModalOpen(false);
+            props.onClose();
+          }}
+        />
         <Text>Hello world</Text>
-      </View>
+      </SafeAreaView>
     </Modal>
   );
 };
 
-export default PotentialRoommates;
-
 const styles = StyleSheet.create({
-  container: {
+  modalContent: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  modalToggle: {
+    marginBottom: 15,
+    padding: 10,
+    alignSelf: 'center',
   },
 });
+
+export default PotentialRoommates;
 
 // // <ScrollView scrollEventThrottle={16}>
 // <View style={{ flex: 1, backgroundColor: 'blue', paddingTop: 60 }}>

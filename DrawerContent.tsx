@@ -40,23 +40,23 @@ const DrawerContent = (props) => {
               />
               <View style={{ marginLeft: 15, flexDirection: 'column' }}>
                 <Title style={styles.title}>Andy Wu</Title>
-                <Caption style={styles.caption}>@loser</Caption>
+                <Caption style={styles.caption}>@RyansServant</Caption>
               </View>
             </View>
 
             <View style={styles.row}>
               <View style={styles.section}>
                 <Paragraph style={[styles.paragraph, styles.caption]}>
-                  wo fucking dumb
+                  wo fucking
                 </Paragraph>
-                <Caption style={styles.caption}>penis</Caption>
+                <Caption style={styles.caption}>dumb</Caption>
               </View>
 
               <View style={styles.section}>
                 <Paragraph style={[styles.paragraph, styles.caption]}>
                   I like
                 </Paragraph>
-                <Caption style={styles.caption}>poopoo pp</Caption>
+                <Caption style={styles.caption}>pp</Caption>
               </View>
             </View>
           </View>
@@ -128,7 +128,7 @@ const DrawerContent = (props) => {
           icon={({ color, size }) => (
             <Icon name='exit-to-app' color={color} size={size} />
           )}
-          label='Andy has small penis'
+          label='Andy is microgang'
           onPress={() => {}}
         />
       </Drawer.Section>
