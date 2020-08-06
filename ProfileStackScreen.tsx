@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
@@ -13,10 +13,11 @@ import {
 
 import ProfileScreen from './ProfileScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
+import EditProfileScreen from './EditProfileScreen';
 
 const ProfileStack = createStackNavigator();
 
-const ProfileStackScreen = ({ navigation }) => {
+const ProfileStackScreen: FunctionComponent<any> = ({ navigation }) => {
   return (
     <ProfileStack.Navigator
       screenOptions={{
@@ -27,7 +28,7 @@ const ProfileStackScreen = ({ navigation }) => {
         },
       }}>
       <ProfileStack.Screen
-        name='DM'
+        name='Profile'
         component={ProfileScreen}
         options={{
           title: 'Blackboard',
@@ -39,6 +40,11 @@ const ProfileStackScreen = ({ navigation }) => {
               onPress={() => navigation.openDrawer()}></Icon.Button>
           ),
         }}
+      />
+      <ProfileStack.Screen
+        name='EditProfile'
+        component={EditProfileScreen}
+        options={{ title: 'Edit Profile' }}
       />
     </ProfileStack.Navigator>
   );

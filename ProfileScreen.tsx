@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import {
   View,
   Text,
@@ -22,7 +22,7 @@ let images = [
 let { width, height } = Dimensions.get('window');
 const title = 'Professional Boomer';
 
-const ProfileScreen = ({ navigation }) => {
+const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
   const [active, setActive] = React.useState(false);
 
   const renderSectionOne = () => {
@@ -97,10 +97,13 @@ const ProfileScreen = ({ navigation }) => {
               dark
               style={{
                 flex: 3,
+                marginTop: 25,
                 marginLeft: 10,
+                marginRight: 10,
                 justifyContent: 'center',
                 height: 30,
-              }}>
+              }}
+              onPress={() => navigation.navigate('EditProfile')}>
               <Text>Edit Profile</Text>
             </Button>
           </View>
