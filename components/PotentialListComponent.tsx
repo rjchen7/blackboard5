@@ -19,9 +19,10 @@ type Props = {
   Name: String;
   Date: String;
   Thumb: ImageSourcePropType;
+  removeItemID: (Name: String) => void;
 };
 
-const PotentialListComponent = ({ Name, Date, Thumb }: Props) => {
+const PotentialListComponent = ({ Name, Date, Thumb, removeItemID }: Props) => {
   // const navigation = useNavigation();
 
   return (
@@ -34,6 +35,9 @@ const PotentialListComponent = ({ Name, Date, Thumb }: Props) => {
             <Text style={styles.date}>{Date}</Text>
           </Body>
         </Left>
+        <Right>
+          <Icon name='logo-no-smoking' onPress={() => removeItemID(Name)} />
+        </Right>
       </CardItem>
     </Card>
   );

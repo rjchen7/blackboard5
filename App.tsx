@@ -37,12 +37,20 @@ const App = () => {
     setPotentials([{ Name, Date, Thumb }, ...potentials]);
   };
 
+  const removeListing = (Name: String) => {
+    setPotentials(potentials.filter((item) => item.Name !== Name));
+  };
+
   return (
     <NavigationContainer>
       <Drawer.Navigator
         initialRouteName='Home'
         drawerContent={(props) => (
-          <DrawerContent {...props} potentials={potentials} />
+          <DrawerContent
+            {...props}
+            potentials={potentials}
+            onPotentialRemove={removeListing}
+          />
         )}
       >
         <Drawer.Screen name='HomeDrawer'>

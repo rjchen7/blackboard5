@@ -22,7 +22,8 @@ const MainTabScreen: FunctionComponent<Props> = ({ onPotentialAdd }: Props) => {
       activeColor='#fff'
       inactiveColor='grey'
       shifting={true}
-      barStyle={{ backgroundColor: 'black' }}>
+      barStyle={{ backgroundColor: 'black' }}
+    >
       <Tab.Screen
         name='Home'
         options={{
@@ -30,7 +31,8 @@ const MainTabScreen: FunctionComponent<Props> = ({ onPotentialAdd }: Props) => {
           tabBarIcon: ({ color }) => (
             <Icon name='ios-home' color={color} size={26} />
           ),
-        }}>
+        }}
+      >
         {(props) => (
           <HomeStackScreen {...props} onPotentialAdd={onPotentialAdd} />
         )}

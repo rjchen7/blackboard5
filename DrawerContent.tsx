@@ -17,7 +17,11 @@ import { Roommate } from './App';
 
 //{...props}
 
-const DrawerContent: FunctionComponent<any> = ({ navigation, potentials }) => {
+const DrawerContent: FunctionComponent<any> = ({
+  navigation,
+  potentials,
+  onPotentialRemove,
+}) => {
   // creating state isDarkTheme
   const [isDarkTheme, setIsDarkTheme] = React.useState(false);
 
@@ -73,6 +77,7 @@ const DrawerContent: FunctionComponent<any> = ({ navigation, potentials }) => {
               setPotentialRoommatesOpen(false);
             }}
             potentials={potentials}
+            onPotentialRemove={onPotentialRemove}
           />
 
           <Drawer.Section style={styles.drawerSection}>

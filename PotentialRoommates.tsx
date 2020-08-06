@@ -25,6 +25,7 @@ const PotentialRoommates: FunctionComponent<{
   modalOpen: boolean;
   potentials: Roommate[];
   onClose: () => any;
+  onPotentialRemove: (Name: String) => void;
 }> = (props) => {
   // renders all potentials into a container tag
   const renderPotentials = () => {
@@ -35,6 +36,7 @@ const PotentialRoommates: FunctionComponent<{
           Name={potential.Name}
           Date={potential.Date}
           Thumb={potential.Thumb}
+          removeItemID={() => props.onPotentialRemove(potential.Name)}
         />
       );
     });
