@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { FunctionComponent, Dispatch, SetStateAction } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
+import { AppLoading } from 'expo';
 
 import HomeScreen from './HomeScreen';
+import { ImageSourcePropType } from 'react-native';
+import { Props } from './MainTabScreen';
 
 // import DMScreen from './DMScreen';
 
@@ -10,7 +14,17 @@ import HomeScreen from './HomeScreen';
 
 const HomeStack = createStackNavigator();
 
-const HomeStackScreen = ({ navigation }) => {
+const HomeStackScreen: FunctionComponent<any> = (
+  { navigation },
+  { onPotentialAdd }: Props
+) => {
+  let [fontsLoaded] = useFonts({
+    Inter_900Black,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
     <HomeStack.Navigator
       screenOptions={{
@@ -18,11 +32,11 @@ const HomeStackScreen = ({ navigation }) => {
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontFamily: 'Inter_900Black',
         },
       }}>
       <HomeStack.Screen
         name='Home'
-        component={HomeScreen}
         options={{
           title: 'Blackboard',
           headerLeft: () => (
@@ -30,21 +44,14 @@ const HomeStackScreen = ({ navigation }) => {
               name='ios-menu'
               size={25}
               backgroundColor='black'
-              onPress={() => navigation.openDrawer()}></Icon.Button>
+              onPress={() => navigation.openDrawer()}
+            />
           ),
-        }}
-      />
+        }}>
+        {(props) => <HomeScreen {...props} onPotentialAdd={onPotentialAdd} />}
+      </HomeStack.Screen>
     </HomeStack.Navigator>
   );
 };
-
-// const HomeScreen = ({ navigation }) => {
-//   return (
-//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//       <Text>Home Screen</Text>
-//       <Button title='Go to DMs' onPress={() => navigation.navigate('DM')} />
-//     </View>
-//   );
-// };
 
 export default HomeStackScreen;

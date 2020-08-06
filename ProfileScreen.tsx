@@ -12,14 +12,14 @@ import { Button } from 'native-base';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-var images = [
+let images = [
   require('./assets/rookie.jpeg'),
   require('./assets/scibowl.jpeg'),
   require('./assets/cook.jpeg'),
   require('./assets/crewshot.jpeg'),
 ];
 
-var { width, height } = Dimensions.get('window');
+let { width, height } = Dimensions.get('window');
 const title = 'Professional Boomer';
 
 const ProfileScreen = ({ navigation }) => {
@@ -86,7 +86,8 @@ const ProfileScreen = ({ navigation }) => {
               }}>
               <Image
                 source={require('./assets/datway.jpeg')}
-                style={{ width: 75, height: 75, borderRadius: 37.5 }}></Image>
+                style={{ width: 75, height: 75, borderRadius: 37.5 }}
+              />
               <Text style={{ fontWeight: 'bold', paddingTop: 10 }}>
                 Andy Wu
               </Text>
@@ -121,7 +122,8 @@ const ProfileScreen = ({ navigation }) => {
               <Icon
                 style={[active == false ? { color: 'teal' } : {}]}
                 name='ios-clipboard'
-                size={30}></Icon>
+                size={30}
+              />
             </Button>
             <Button
               transparent
@@ -131,7 +133,8 @@ const ProfileScreen = ({ navigation }) => {
               <Icon
                 name='ios-expand'
                 style={[active == true ? { color: 'teal' } : {}]}
-                size={30}></Icon>
+                size={30}
+              />
             </Button>
           </View>
           {renderSection()}

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, SetStateAction, Dispatch } from 'react';
 import {
   createStackNavigator,
   StackScreenProps,
@@ -10,10 +10,12 @@ import HomeStackScreen from './HomeStackScreen';
 import DMStackScreen from './DMStackScreen';
 import ProfileStackScreen from './ProfileStackScreen';
 import { NavigationProp } from '@react-navigation/native';
+import { ImageSourcePropType } from 'react-native';
+import { Roommate } from './App';
 
 const Tab = createMaterialBottomTabNavigator();
 
-const MainTabScreen: FunctionComponent = () => {
+const MainTabScreen: FunctionComponent<Props> = ({ onPotentialAdd }: Props) => {
   return (
     <Tab.Navigator
       initialRouteName='Home'
@@ -23,14 +25,16 @@ const MainTabScreen: FunctionComponent = () => {
       barStyle={{ backgroundColor: 'black' }}>
       <Tab.Screen
         name='Home'
-        component={HomeStackScreen}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => (
             <Icon name='ios-home' color={color} size={26} />
           ),
-        }}
-      />
+        }}>
+        {(props) => (
+          <HomeStackScreen {...props} onPotentialAdd={onPotentialAdd} />
+        )}
+      </Tab.Screen>
       <Tab.Screen
         name='DM'
         component={DMStackScreen}
@@ -55,56 +59,8 @@ const MainTabScreen: FunctionComponent = () => {
   );
 };
 
+export type Props = {
+  onPotentialAdd: ({ Name, Date, Thumb }: Roommate) => void;
+};
+
 export default MainTabScreen;
-
-// const HomeStackScreen: FunctionComponent<any> = ({ navigation }) => (
-//   <HomeStack.Navigator
-//     screenOptions={{
-//       headerStyle: { backgroundColor: 'black' },
-//       headerTintColor: '#fff',
-//       headerTitleStyle: {
-//         fontWeight: 'bold',
-//       },
-//     }}>
-//     <HomeStack.Screen
-//       name='Home'
-//       component={HomeScreen}
-//       options={{
-//         title: 'Blackboard',
-//         headerLeft: () => (
-//           <Icon.Button
-//             name='ios-menu'
-//             size={25}
-//             backgroundColor='black'
-//             onPress={() => navigation.openDrawer()}></Icon.Button>
-//         ),
-//       }}
-//     />
-//   </HomeStack.Navigator>
-// );
-
-// const DMStackScreen = ({ navigation }) => (
-//   <DMStack.Navigator
-//     screenOptions={{
-//       headerStyle: { backgroundColor: 'black' },
-//       headerTintColor: '#fff',
-//       headerTitleStyle: {
-//         fontWeight: 'bold',
-//       },
-//     }}>
-//     <DMStack.Screen
-//       name='DM'
-//       component={DMScreen}
-//       options={{
-//         title: 'Blackboard',
-//         headerLeft: () => (
-//           <Icon.Button
-//             name='ios-menu'
-//             size={25}
-//             backgroundColor='black'
-//             onPress={() => navigation.openDrawer()}></Icon.Button>
-//         ),
-//       }}
-//     />
-//   </DMStack.Navigator>
-// );

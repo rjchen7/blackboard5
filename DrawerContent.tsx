@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, { FunctionComponent } from 'react';
+import { View, StyleSheet, ImageSourcePropType } from 'react-native';
 import {
   Avatar,
   Title,
@@ -13,8 +13,14 @@ import {
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PotentialRoommates from './PotentialRoommates';
+import { Roommate } from './App';
 
-const DrawerContent = (props) => {
+//{...props}
+
+const DrawerContent: FunctionComponent<Props> = (
+  { navigation },
+  { potentials }: Props
+) => {
   // creating state isDarkTheme
   const [isDarkTheme, setIsDarkTheme] = React.useState(false);
 
@@ -23,13 +29,14 @@ const DrawerContent = (props) => {
     setIsDarkTheme(!isDarkTheme);
   };
 
+  // state for if Potential Roommates Modal
   const [potentialRoommatesOpen, setPotentialRoommatesOpen] = React.useState(
     false
   );
 
   return (
     <View style={{ flex: 1 }}>
-      <DrawerContentScrollView {...props}>
+      <DrawerContentScrollView>
         <View style={styles.drawerContent}>
           <View style={styles.userInfoSection}>
             <View style={{ flexDirection: 'row', marginTop: 15 }}>
@@ -68,6 +75,7 @@ const DrawerContent = (props) => {
             onClose={() => {
               setPotentialRoommatesOpen(false);
             }}
+            potentials={potentials}
           />
 
           <Drawer.Section style={styles.drawerSection}>
@@ -97,7 +105,7 @@ const DrawerContent = (props) => {
               )}
               label='Settings'
               onPress={() => {
-                props.navigation.navigate('SettingsScreen');
+                navigation.navigate('SettingsScreen');
               }}
             />
             <DrawerItem
@@ -106,7 +114,7 @@ const DrawerContent = (props) => {
               )}
               label='Support'
               onPress={() => {
-                props.navigation.navigate('SupportScreen');
+                navigation.navigate('SupportScreen');
               }}
             />
           </Drawer.Section>
@@ -183,5 +191,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
 });
+
+type Props = {
+  potentials: Roommate[];
+};
 
 export default DrawerContent;
