@@ -53,8 +53,7 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
               borderColor: 'black',
               width: undefined,
               height: undefined,
-            }}
-          ></Image>
+            }}></Image>
         </View>
       );
     });
@@ -66,8 +65,7 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
     return (
       <SafeAreaView style={styles.container}>
         <Text
-          style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 24 }}
-        >
+          style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 24 }}>
           Preferences
         </Text>
         <Divider style={styles.divider} />
@@ -140,62 +138,65 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
     };
     return (
       <SafeAreaView style={styles.container}>
-        <Text
-          style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 24 }}
-        >
-          Preferences
-        </Text>
-        <Divider style={styles.divider} />
-        <View style={styles.icon}>
-          <Icon name='ios-book' size={30}></Icon>
-          <TextInput
-            style={styles.input}
-            placeholder={state.Bio}
-            onChangeText={(text) => changeBio(text)}
-          />
+        <View>
+          <Text
+            style={{
+              alignContent: 'center',
+              fontWeight: 'bold',
+              fontSize: 24,
+            }}>
+            Preferences
+          </Text>
+          <Divider style={styles.divider} />
+          <View style={styles.icon}>
+            <Icon name='ios-book' size={30}></Icon>
+            <TextInput
+              style={styles.input}
+              placeholder={state.Bio}
+              onChangeText={(text) => changeBio(text)}
+            />
+          </View>
+          <Divider style={styles.divider} />
+          <View style={styles.icon}>
+            <Icon name='ios-clock' size={30}></Icon>
+            <TextInput
+              style={styles.input}
+              placeholder={state.SleepSchedule}
+              onChangeText={(text) => changeSchedule(text)}
+            />
+          </View>
+          <Divider style={styles.divider} />
+          <View style={styles.icon}>
+            <Icon name='ios-beer' size={30}></Icon>
+            <TextInput
+              style={styles.input}
+              placeholder={state.Habits}
+              onChangeText={(text) => changeHabits(text)}
+            />
+          </View>
+          <Divider style={styles.divider} />
+          <View style={styles.icon}>
+            <Icon name='ios-baseball' size={30}></Icon>
+            <TextInput
+              style={styles.input}
+              placeholder={state.Activities}
+              onChangeText={(text) => changeActivities(text)}
+            />
+          </View>
         </View>
-        <Divider style={styles.divider} />
-        <View style={styles.icon}>
-          <Icon name='ios-clock' size={30}></Icon>
-          <TextInput
-            style={styles.input}
-            placeholder={state.SleepSchedule}
-            onChangeText={(text) => changeSchedule(text)}
-          />
-        </View>
-        <Divider style={styles.divider} />
-        <View style={styles.icon}>
-          <Icon name='ios-beer' size={30}></Icon>
-          <TextInput
-            style={styles.input}
-            placeholder={state.Habits}
-            onChangeText={(text) => changeHabits(text)}
-          />
-        </View>
-        <Divider style={styles.divider} />
-        <View style={styles.icon}>
-          <Icon name='ios-baseball' size={30}></Icon>
-          <TextInput
-            style={styles.input}
-            placeholder={state.Activities}
-            onChangeText={(text) => changeActivities(text)}
-          />
-        </View>
-        <View style={styles.button}>
+        <View style={{ flexDirection: 'row' }}>
           <Button
             bordered
             dark
             style={styles.bottomButton}
-            onPress={() => saveInputs(Possible)}
-          >
+            onPress={() => saveInputs(Possible)}>
             <Text>Save</Text>
           </Button>
           <Button
             bordered
             dark
             style={styles.bottomButton}
-            onPress={() => setInEditMode(!inEditMode)}
-          >
+            onPress={() => setInEditMode(!inEditMode)}>
             <Text>Cancel</Text>
           </Button>
         </View>
@@ -212,16 +213,14 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
             paddingLeft: 10,
             paddingBottom: 10,
             paddingRight: 10,
-          }}
-        >
+          }}>
           <View style={{ flexDirection: 'row' }}>
             <View
               style={{
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}
-            >
+              }}>
               <Image
                 source={require('./assets/datway.jpeg')}
                 style={styles.profilePicture}
@@ -241,8 +240,7 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
                 justifyContent: 'center',
                 height: 30,
               }}
-              onPress={() => setInEditMode(!inEditMode)}
-            >
+              onPress={() => setInEditMode(!inEditMode)}>
               <Text>Edit Profile</Text>
             </Button>
           </View>
@@ -255,14 +253,12 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
               justifyContent: 'space-around',
               borderTopWidth: 1,
               borderTopColor: '#eae5e5',
-            }}
-          >
+            }}>
             <Button
               transparent
               onPress={() => {
                 setActive(false);
-              }}
-            >
+              }}>
               <Icon
                 style={[active == false ? { color: 'teal' } : {}]}
                 name='ios-clipboard'
@@ -273,8 +269,7 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
               transparent
               onPress={() => {
                 setActive(true);
-              }}
-            >
+              }}>
               <Icon
                 name='ios-expand'
                 style={[active == true ? { color: 'teal' } : {}]}
@@ -338,12 +333,11 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
   bottomButton: {
-    flex: 3,
+    flex: 1,
     marginTop: 25,
-    marginLeft: 10,
-    marginRight: 10,
+    marginHorizontal: 40,
     justifyContent: 'center',
-    height: 10,
+    height: 30,
   },
 });
 
