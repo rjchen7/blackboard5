@@ -17,10 +17,7 @@ import { Roommate } from './App';
 
 //{...props}
 
-const DrawerContent: FunctionComponent<Props> = (
-  { navigation },
-  { potentials }: Props
-) => {
+const DrawerContent: FunctionComponent<any> = ({ navigation, potentials }) => {
   // creating state isDarkTheme
   const [isDarkTheme, setIsDarkTheme] = React.useState(false);
 
@@ -49,7 +46,7 @@ const DrawerContent: FunctionComponent<Props> = (
               />
               <View style={{ marginLeft: 15, flexDirection: 'column' }}>
                 <Title style={styles.title}>Andy Wu</Title>
-                <Caption style={styles.caption}>@RyansServant</Caption>
+                <Caption style={styles.caption}>@RyansMaster</Caption>
               </View>
             </View>
 
@@ -122,7 +119,8 @@ const DrawerContent: FunctionComponent<Props> = (
             <TouchableRipple
               onPress={() => {
                 toggleTheme();
-              }}>
+              }}
+            >
               <View style={styles.preference}>
                 <Text>Dark Mode</Text>
                 <View pointerEvents='none'>

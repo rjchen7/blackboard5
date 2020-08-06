@@ -43,7 +43,8 @@ const PotentialRoommates: FunctionComponent<{
     <Modal
       visible={props.modalOpen}
       animationType='slide'
-      presentationStyle='pageSheet'>
+      presentationStyle='pageSheet'
+    >
       <SafeAreaView style={styles.modalContent}>
         <Icon
           style={styles.modalToggle}
@@ -56,7 +57,7 @@ const PotentialRoommates: FunctionComponent<{
 
         <Text style={styles.modalTitle}>Potential Roommates:</Text>
         <Container style={styles.container}>
-          <Content>{renderPotentials}</Content>
+          <Content>{renderPotentials()}</Content>
         </Container>
       </SafeAreaView>
     </Modal>

@@ -14,10 +14,10 @@ import { Props } from './MainTabScreen';
 
 const HomeStack = createStackNavigator();
 
-const HomeStackScreen: FunctionComponent<any> = (
-  { navigation },
-  { onPotentialAdd }: Props
-) => {
+const HomeStackScreen: FunctionComponent<any> = ({
+  navigation,
+  onPotentialAdd,
+}: any) => {
   let [fontsLoaded] = useFonts({
     Inter_900Black,
   });
@@ -34,7 +34,8 @@ const HomeStackScreen: FunctionComponent<any> = (
           fontWeight: 'bold',
           fontFamily: 'Inter_900Black',
         },
-      }}>
+      }}
+    >
       <HomeStack.Screen
         name='Home'
         options={{
@@ -47,7 +48,8 @@ const HomeStackScreen: FunctionComponent<any> = (
               onPress={() => navigation.openDrawer()}
             />
           ),
-        }}>
+        }}
+      >
         {(props) => <HomeScreen {...props} onPotentialAdd={onPotentialAdd} />}
       </HomeStack.Screen>
     </HomeStack.Navigator>

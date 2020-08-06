@@ -35,7 +35,6 @@ const App = () => {
 
   const handlePotentialAdd = ({ Name, Date, Thumb }: Roommate) => {
     setPotentials([{ Name, Date, Thumb }, ...potentials]);
-    // console.log(6);
   };
 
   return (
@@ -44,7 +43,8 @@ const App = () => {
         initialRouteName='Home'
         drawerContent={(props) => (
           <DrawerContent {...props} potentials={potentials} />
-        )}>
+        )}
+      >
         <Drawer.Screen name='HomeDrawer'>
           {(props) => (
             <MainTabScreen {...props} onPotentialAdd={handlePotentialAdd} />

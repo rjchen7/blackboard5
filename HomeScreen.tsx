@@ -5,10 +5,10 @@ import ScrollComponent from './components/ScrollComponent';
 import { State } from 'react-native-gesture-handler';
 import { Props } from './MainTabScreen';
 
-const HomeScreen: FunctionComponent<any> = (
-  { navigation },
-  { onPotentialAdd }: Props
-) => {
+const HomeScreen: FunctionComponent<any> = ({
+  navigation,
+  onPotentialAdd,
+}: any) => {
   return (
     <Container style={styles.container}>
       <Content>
@@ -18,12 +18,14 @@ const HomeScreen: FunctionComponent<any> = (
           Thumb={require('./assets/boomer2g.png')}
           ImageUri={require('./assets/eltrollo.jpeg')}
           text=' BALLSACK!'
-          addPotential={() =>
-            onPotentialAdd({
-              Name: 'El Truco',
-              Date: 'August 1, 2021',
-              Thumb: require('./assets/boomer2g.png'),
-            })
+          addPotential={
+            () =>
+              onPotentialAdd({
+                Name: 'El Truco',
+                Date: 'August 1, 2021',
+                Thumb: require('./assets/boomer2g.png'),
+              })
+            // console.log(6)
           }
           goToDM={() => navigation.navigate('DM')}
         />
