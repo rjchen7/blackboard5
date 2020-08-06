@@ -6,12 +6,14 @@ import {
   Image,
   StyleSheet,
   SafeAreaView,
+  TextInput,
 } from 'react-native';
 import { Divider } from 'react-native-elements';
 import { Button } from 'native-base';
-// import DropDownPicker from 'react-native-dropdown-picker';
 
 import Icon from 'react-native-vector-icons/Ionicons';
+import { State } from 'react-native-gesture-handler';
+import EditProfileScreen from './EditProfileScreen';
 
 let images = [
   require('./assets/rookie.jpeg'),
@@ -21,15 +23,23 @@ let images = [
 ];
 
 let { width, height } = Dimensions.get('window');
+type Description = {
+  Bio: string;
+  SleepSchedule: string;
+  Habits: string;
+  Activities: string;
+};
 const title = 'Professional Boomer';
 
 const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
   const [active, setActive] = React.useState(false);
-  const [state, setState] = React.useState('Penis');
-
-  const changeState = (stuff: string) => {
-    setState(stuff);
-  };
+  const [state, setState] = React.useState({
+    Bio: 'Air',
+    SleepSchedule: 'Rick',
+    Habits: 'Inthe',
+    Activities: 'Dick',
+  });
+  const [inEditMode, setInEditMode] = React.useState(false);
 
   const renderSectionOne = () => {
     return images.map((image, index) => {
@@ -43,53 +53,153 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
               borderColor: 'black',
               width: undefined,
               height: undefined,
-            }}></Image>
+            }}
+          ></Image>
         </View>
       );
     });
   };
 
+  const saveChanges = () => {};
+
   const renderSectionTwo = () => {
     return (
       <SafeAreaView style={styles.container}>
         <Text
-          style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 24 }}>
+          style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 24 }}
+        >
           Preferences
         </Text>
         <Divider style={styles.divider} />
-        <View>
-          <Icon name='ios-clock' size={30}></Icon>
+        <View style={styles.icon}>
+          <Icon name='ios-book' size={30}></Icon>
+          <Text>{state.Bio}</Text>
         </View>
         <Divider style={styles.divider} />
-        <Text style={styles.name}>{title}</Text>
-        <Text style={styles.desc}>Sleep Day n Nite!</Text>
+        <View style={styles.icon}>
+          <Icon name='ios-clock' size={30}></Icon>
+          <Text>{state.SleepSchedule}</Text>
+        </View>
         <Divider style={styles.divider} />
         <View style={styles.icon}>
           <Icon name='ios-beer' size={30}></Icon>
+          <Text>{state.Habits}</Text>
         </View>
         <Divider style={styles.divider} />
-        <Text style={styles.desc}>I smoke all day.</Text>
-        <Divider style={styles.divider} />
-        <View>
+        <View style={styles.icon}>
           <Icon name='ios-baseball' size={30}></Icon>
+          <Text>{state.Activities}</Text>
         </View>
-        <Divider style={styles.divider} />
-        <Text style={styles.desc}>Penis</Text>
-        <Divider style={styles.divider} />
       </SafeAreaView>
     );
   };
 
   const renderSection = () => {
-    if (!active) {
-      return (
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-          {renderSectionOne()}
-        </View>
-      );
+    if (inEditMode) {
+      return <View>{renderEdit()}</View>;
     } else {
-      return <View>{renderSectionTwo()}</View>;
+      if (!active) {
+        return (
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+            {renderSectionOne()}
+          </View>
+        );
+      } else {
+        return <View>{renderSectionTwo()}</View>;
+      }
     }
+  };
+
+  const renderEdit = () => {
+    const Possible = {
+      Bio: state.Bio,
+      SleepSchedule: state.SleepSchedule,
+      Habits: state.Habits,
+      Activities: state.Activities,
+    };
+    const changeBio = (text: string) => {
+      Possible.Bio = text;
+    };
+    const changeSchedule = (text: string) => {
+      Possible.SleepSchedule = text;
+    };
+    const changeHabits = (text: string) => {
+      Possible.Habits = text;
+    };
+    const changeActivities = (text: string) => {
+      Possible.Activities = text;
+    };
+    const saveInputs = (Possible: Description) => {
+      setState({
+        Bio: Possible.Bio,
+        SleepSchedule: Possible.SleepSchedule,
+        Habits: Possible.Habits,
+        Activities: Possible.Activities,
+      });
+      setInEditMode(!inEditMode);
+    };
+    return (
+      <SafeAreaView style={styles.container}>
+        <Text
+          style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 24 }}
+        >
+          Preferences
+        </Text>
+        <Divider style={styles.divider} />
+        <View style={styles.icon}>
+          <Icon name='ios-book' size={30}></Icon>
+          <TextInput
+            style={styles.input}
+            placeholder={state.Bio}
+            onChangeText={(text) => changeBio(text)}
+          />
+        </View>
+        <Divider style={styles.divider} />
+        <View style={styles.icon}>
+          <Icon name='ios-clock' size={30}></Icon>
+          <TextInput
+            style={styles.input}
+            placeholder={state.SleepSchedule}
+            onChangeText={(text) => changeSchedule(text)}
+          />
+        </View>
+        <Divider style={styles.divider} />
+        <View style={styles.icon}>
+          <Icon name='ios-beer' size={30}></Icon>
+          <TextInput
+            style={styles.input}
+            placeholder={state.Habits}
+            onChangeText={(text) => changeHabits(text)}
+          />
+        </View>
+        <Divider style={styles.divider} />
+        <View style={styles.icon}>
+          <Icon name='ios-baseball' size={30}></Icon>
+          <TextInput
+            style={styles.input}
+            placeholder={state.Activities}
+            onChangeText={(text) => changeActivities(text)}
+          />
+        </View>
+        <View style={styles.button}>
+          <Button
+            bordered
+            dark
+            style={{
+              flex: 3,
+              marginTop: 25,
+              marginLeft: 10,
+              marginRight: 10,
+              justifyContent: 'center',
+              height: 30,
+            }}
+            onPress={() => saveInputs(Possible)}
+          >
+            <Text>Save</Text>
+          </Button>
+        </View>
+      </SafeAreaView>
+    );
   };
 
   return (
@@ -101,14 +211,16 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
             paddingLeft: 10,
             paddingBottom: 10,
             paddingRight: 10,
-          }}>
+          }}
+        >
           <View style={{ flexDirection: 'row' }}>
             <View
               style={{
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}>
+              }}
+            >
               <Image
                 source={require('./assets/datway.jpeg')}
                 style={styles.profilePicture}
@@ -128,7 +240,8 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
                 justifyContent: 'center',
                 height: 30,
               }}
-              onPress={() => navigation.navigate('EditProfile')}>
+              onPress={() => setInEditMode(!inEditMode)}
+            >
               <Text>Edit Profile</Text>
             </Button>
           </View>
@@ -141,12 +254,14 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
               justifyContent: 'space-around',
               borderTopWidth: 1,
               borderTopColor: '#eae5e5',
-            }}>
+            }}
+          >
             <Button
               transparent
               onPress={() => {
                 setActive(false);
-              }}>
+              }}
+            >
               <Icon
                 style={[active == false ? { color: 'teal' } : {}]}
                 name='ios-clipboard'
@@ -157,7 +272,8 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
               transparent
               onPress={() => {
                 setActive(true);
-              }}>
+              }}
+            >
               <Icon
                 name='ios-expand'
                 style={[active == true ? { color: 'teal' } : {}]}
@@ -206,6 +322,18 @@ const styles = StyleSheet.create({
     borderRadius: 37.5,
     borderWidth: 0.3,
     borderColor: 'black',
+  },
+  input: {
+    width: '90%',
+    backgroundColor: '#fff',
+    padding: 15,
+    marginBottom: 10,
+  },
+  button: {
+    width: 75,
+    height: 75,
+    justifyContent: 'center',
+    alignContent: 'center',
   },
 });
 
