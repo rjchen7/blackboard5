@@ -11,19 +11,28 @@ import DMStackScreen from './DMStackScreen';
 import ProfileStackScreen from './ProfileStackScreen';
 import { NavigationProp } from '@react-navigation/native';
 import { ImageSourcePropType } from 'react-native';
-import { Roommate } from './App';
+import { Roommate, DMUser } from './App';
 
 const Tab = createMaterialBottomTabNavigator();
 
-const MainTabScreen: FunctionComponent<Props> = ({ onPotentialAdd }: Props) => {
+type Props = {
+  onPotentialAdd: ({ Name, Date, Thumb }: Roommate) => void;
+  onDMListAdd: ({ Name, Thumb }: DMUser) => void;
+  DMList: DMUser[];
+};
+
+const MainTabScreen: FunctionComponent<Props> = ({
+  onPotentialAdd,
+  onDMListAdd,
+  DMList,
+}) => {
   return (
     <Tab.Navigator
       initialRouteName='Home'
       activeColor='#fff'
       inactiveColor='grey'
       shifting={true}
-      barStyle={{ backgroundColor: 'black' }}
-    >
+      barStyle={{ backgroundColor: 'black' }}>
       <Tab.Screen
         name='Home'
         options={{
@@ -31,22 +40,27 @@ const MainTabScreen: FunctionComponent<Props> = ({ onPotentialAdd }: Props) => {
           tabBarIcon: ({ color }) => (
             <Icon name='ios-home' color={color} size={26} />
           ),
-        }}
-      >
+        }}>
         {(props) => (
-          <HomeStackScreen {...props} onPotentialAdd={onPotentialAdd} />
+          <HomeStackScreen
+            {...props}
+            onPotentialAdd={onPotentialAdd}
+            onDMListAdd={onDMListAdd}
+          />
         )}
       </Tab.Screen>
+
       <Tab.Screen
         name='DM'
-        component={DMStackScreen}
         options={{
           tabBarLabel: 'DMs',
           tabBarIcon: ({ color }) => (
             <Icon name='ios-beer' color={color} size={26} />
           ),
-        }}
-      />
+        }}>
+        {(props) => <DMStackScreen {...props} DMList={DMList} />}
+      </Tab.Screen>
+
       <Tab.Screen
         name='Profile'
         component={ProfileStackScreen}
@@ -59,10 +73,6 @@ const MainTabScreen: FunctionComponent<Props> = ({ onPotentialAdd }: Props) => {
       />
     </Tab.Navigator>
   );
-};
-
-export type Props = {
-  onPotentialAdd: ({ Name, Date, Thumb }: Roommate) => void;
 };
 
 export default MainTabScreen;

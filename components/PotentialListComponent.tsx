@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, FunctionComponent } from 'react';
 import { Text, StyleSheet, Image, ImageSourcePropType } from 'react-native';
 import {
   Card,
@@ -7,13 +7,10 @@ import {
   Body,
   Left,
   Right,
-  Button,
   Icon,
 } from 'native-base';
 
 // import DMScreen from '../DMScreen';
-import { accessibilityProps } from 'react-native-paper/lib/typescript/src/components/MaterialCommunityIcon';
-import { useNavigation } from '@react-navigation/native';
 
 type Props = {
   Name: String;
@@ -22,14 +19,19 @@ type Props = {
   removeItemID: (Name: String) => void;
 };
 
-const PotentialListComponent = ({ Name, Date, Thumb, removeItemID }: Props) => {
+const PotentialListComponent: FunctionComponent<Props> = ({
+  Name,
+  Date,
+  Thumb,
+  removeItemID,
+}) => {
   // const navigation = useNavigation();
 
   return (
     <Card style={styles.container}>
       <CardItem>
         <Left>
-          <Thumbnail source={Thumb}></Thumbnail>
+          <Thumbnail source={Thumb} />
           <Body>
             <Text style={styles.name}>{Name}</Text>
             <Text style={styles.date}>{Date}</Text>

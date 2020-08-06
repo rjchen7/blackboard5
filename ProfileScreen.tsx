@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { Divider } from 'react-native-elements';
 import { Button } from 'native-base';
-import DropDownPicker from 'react-native-dropdown-picker';
+// import DropDownPicker from 'react-native-dropdown-picker';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -37,8 +37,13 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
         <View key={index} style={[{ width: width / 2 }, { height: width / 2 }]}>
           <Image
             source={image}
-            style={{ flex: 1, width: undefined, height: undefined }}
-          ></Image>
+            style={{
+              flex: 1,
+              borderWidth: 0.3,
+              borderColor: 'black',
+              width: undefined,
+              height: undefined,
+            }}></Image>
         </View>
       );
     });
@@ -48,8 +53,7 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
     return (
       <SafeAreaView style={styles.container}>
         <Text
-          style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 24 }}
-        >
+          style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 24 }}>
           Preferences
         </Text>
         <Divider style={styles.divider} />
@@ -91,18 +95,23 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
       <View>
-        <View style={{ paddingTop: 10, paddingLeft: 10, paddingBottom: 10 }}>
+        <View
+          style={{
+            paddingTop: 10,
+            paddingLeft: 10,
+            paddingBottom: 10,
+            paddingRight: 10,
+          }}>
           <View style={{ flexDirection: 'row' }}>
             <View
               style={{
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}
-            >
+              }}>
               <Image
                 source={require('./assets/datway.jpeg')}
-                style={{ width: 75, height: 75, borderRadius: 37.5 }}
+                style={styles.profilePicture}
               />
               <Text style={{ fontWeight: 'bold', paddingTop: 10 }}>
                 Andy Wu
@@ -119,8 +128,7 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
                 justifyContent: 'center',
                 height: 30,
               }}
-              onPress={() => navigation.navigate('EditProfile')}
-            >
+              onPress={() => navigation.navigate('EditProfile')}>
               <Text>Edit Profile</Text>
             </Button>
           </View>
@@ -133,14 +141,12 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
               justifyContent: 'space-around',
               borderTopWidth: 1,
               borderTopColor: '#eae5e5',
-            }}
-          >
+            }}>
             <Button
               transparent
               onPress={() => {
                 setActive(false);
-              }}
-            >
+              }}>
               <Icon
                 style={[active == false ? { color: 'teal' } : {}]}
                 name='ios-clipboard'
@@ -151,8 +157,7 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
               transparent
               onPress={() => {
                 setActive(true);
-              }}
-            >
+              }}>
               <Icon
                 name='ios-expand'
                 style={[active == true ? { color: 'teal' } : {}]}
@@ -194,6 +199,13 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     marginHorizontal: 30,
     fontSize: 14,
+  },
+  profilePicture: {
+    width: 75,
+    height: 75,
+    borderRadius: 37.5,
+    borderWidth: 0.3,
+    borderColor: 'black',
   },
 });
 

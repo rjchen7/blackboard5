@@ -3,12 +3,19 @@ import { StyleSheet, ImageSourcePropType } from 'react-native';
 import { Container, Content } from 'native-base';
 import ScrollComponent from './components/ScrollComponent';
 import { State } from 'react-native-gesture-handler';
-import { Props } from './MainTabScreen';
+import { Roommate, DMUser } from './App';
 
-const HomeScreen: FunctionComponent<any> = ({
+type Props = {
+  navigation: any;
+  onPotentialAdd: ({ Name, Date, Thumb }: Roommate) => void;
+  onDMListAdd: ({ Name, Thumb }: DMUser) => void;
+};
+
+const HomeScreen: FunctionComponent<Props> = ({
   navigation,
   onPotentialAdd,
-}: any) => {
+  onDMListAdd,
+}) => {
   return (
     <Container style={styles.container}>
       <Content>
@@ -27,7 +34,14 @@ const HomeScreen: FunctionComponent<any> = ({
               })
             // console.log(6)
           }
-          goToDM={() => navigation.navigate('DM')}
+          addDMUser={() => {
+            onDMListAdd({
+              Id: '1',
+              Name: 'El Truco',
+              Thumb: require('./assets/boomer2g.png'),
+            });
+            navigation.navigate('DM');
+          }}
         />
         <ScrollComponent
           Name='Rue Grandpa'
@@ -42,7 +56,14 @@ const HomeScreen: FunctionComponent<any> = ({
               Thumb: require('./assets/thegang.jpg'),
             })
           }
-          goToDM={() => navigation.navigate('DM')}
+          addDMUser={() => {
+            onDMListAdd({
+              Id: '2',
+              Name: 'Rue Grandpa',
+              Thumb: require('./assets/thegang.jpg'),
+            });
+            navigation.navigate('DM');
+          }}
         />
         <ScrollComponent
           Name='2 Chainz'
@@ -57,7 +78,14 @@ const HomeScreen: FunctionComponent<any> = ({
               Thumb: require('./assets/2chainz.jpeg'),
             })
           }
-          goToDM={() => navigation.navigate('DM')}
+          addDMUser={() => {
+            onDMListAdd({
+              Id: '3',
+              Name: '2 Chainz',
+              Thumb: require('./assets/2chainz.jpeg'),
+            });
+            navigation.navigate('DM');
+          }}
         />
       </Content>
     </Container>
@@ -67,7 +95,7 @@ const HomeScreen: FunctionComponent<any> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#F5FFFA',
   },
 });
 

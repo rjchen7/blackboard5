@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, FunctionComponent } from 'react';
 import {
   View,
   Text,
@@ -29,18 +29,18 @@ type Props = {
   ImageUri: ImageSourcePropType;
   text: string;
   addPotential: () => void;
-  goToDM: () => any;
+  addDMUser: () => void;
 };
 
-const ScrollComponent = ({
+const ScrollComponent: FunctionComponent<Props> = ({
   Name,
   Date,
   Thumb,
   ImageUri,
   text,
   addPotential,
-  goToDM,
-}: Props) => {
+  addDMUser,
+}) => {
   // const navigation = useNavigation();
 
   return (
@@ -62,7 +62,7 @@ const ScrollComponent = ({
           <Button transparent onPress={addPotential}>
             <Icon name='ios-add' style={{ color: 'black' }} />
           </Button>
-          <Button transparent onPress={goToDM}>
+          <Button transparent onPress={addDMUser}>
             <Icon name='ios-paper-plane' style={{ color: 'black' }} />
           </Button>
           <Button transparent>

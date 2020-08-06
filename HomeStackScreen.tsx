@@ -6,18 +6,25 @@ import { AppLoading } from 'expo';
 
 import HomeScreen from './HomeScreen';
 import { ImageSourcePropType } from 'react-native';
-import { Props } from './MainTabScreen';
+import { DMUser, Roommate } from './App';
 
 // import DMScreen from './DMScreen';
 
 // the reason it is navigation.navigate('DM') is because in the DMStackScreen component it is named DM
 
+type Props = {
+  navigation: any;
+  onPotentialAdd: ({ Name, Date, Thumb }: Roommate) => void;
+  onDMListAdd: ({ Name, Thumb }: DMUser) => void;
+};
+
 const HomeStack = createStackNavigator();
 
-const HomeStackScreen: FunctionComponent<any> = ({
+const HomeStackScreen: FunctionComponent<Props> = ({
   navigation,
   onPotentialAdd,
-}: any) => {
+  onDMListAdd,
+}) => {
   let [fontsLoaded] = useFonts({
     Inter_900Black,
   });
@@ -34,8 +41,7 @@ const HomeStackScreen: FunctionComponent<any> = ({
           fontWeight: 'bold',
           fontFamily: 'Inter_900Black',
         },
-      }}
-    >
+      }}>
       <HomeStack.Screen
         name='Home'
         options={{
@@ -48,9 +54,14 @@ const HomeStackScreen: FunctionComponent<any> = ({
               onPress={() => navigation.openDrawer()}
             />
           ),
-        }}
-      >
-        {(props) => <HomeScreen {...props} onPotentialAdd={onPotentialAdd} />}
+        }}>
+        {(props) => (
+          <HomeScreen
+            {...props}
+            onPotentialAdd={onPotentialAdd}
+            onDMListAdd={onDMListAdd}
+          />
+        )}
       </HomeStack.Screen>
     </HomeStack.Navigator>
   );

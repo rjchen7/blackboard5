@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -6,7 +6,7 @@ import DMScreen from './DMScreen';
 
 const DMStack = createStackNavigator();
 
-const DMStackScreen = ({ navigation }) => {
+const DMStackScreen: FunctionComponent<any> = ({ navigation, DMList }) => {
   return (
     <DMStack.Navigator
       screenOptions={{
@@ -18,7 +18,6 @@ const DMStackScreen = ({ navigation }) => {
       }}>
       <DMStack.Screen
         name='DM'
-        component={DMScreen}
         options={{
           title: 'Blackboard',
           headerLeft: () => (
@@ -28,8 +27,9 @@ const DMStackScreen = ({ navigation }) => {
               backgroundColor='black'
               onPress={() => navigation.openDrawer()}></Icon.Button>
           ),
-        }}
-      />
+        }}>
+        {(props) => <DMScreen {...props} DMList={DMList} />}
+      </DMStack.Screen>
     </DMStack.Navigator>
   );
 };

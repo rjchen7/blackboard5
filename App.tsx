@@ -13,8 +13,14 @@ import { ImageSourcePropType } from 'react-native';
 const Drawer = createDrawerNavigator();
 
 export type Roommate = {
-  Name: String;
-  Date: String;
+  Name: string;
+  Date: string;
+  Thumb: ImageSourcePropType;
+};
+
+export type DMUser = {
+  Id: string;
+  Name: string;
   Thumb: ImageSourcePropType;
 };
 
@@ -32,6 +38,12 @@ export type Roommate = {
 const App = () => {
   // const roomies = React.createContext([]);
   const [potentials, setPotentials] = React.useState<Array<Roommate>>([]);
+
+  const [DMList, setDMList] = React.useState<Array<DMUser>>([]);
+
+  const handleDMListAdd = ({ Name, Thumb }: DMUser) => {
+    setDMList([{ Name, Thumb }, ...DMList]);
+  };
 
   const handlePotentialAdd = ({ Name, Date, Thumb }: Roommate) => {
     setPotentials([{ Name, Date, Thumb }, ...potentials]);
@@ -51,11 +63,15 @@ const App = () => {
             potentials={potentials}
             onPotentialRemove={removeListing}
           />
-        )}
-      >
+        )}>
         <Drawer.Screen name='HomeDrawer'>
           {(props) => (
-            <MainTabScreen {...props} onPotentialAdd={handlePotentialAdd} />
+            <MainTabScreen
+              {...props}
+              onPotentialAdd={handlePotentialAdd}
+              onDMListAdd={handleDMListAdd}
+              DMList={DMList}
+            />
           )}
         </Drawer.Screen>
       </Drawer.Navigator>
