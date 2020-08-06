@@ -185,17 +185,18 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
           <Button
             bordered
             dark
-            style={{
-              flex: 3,
-              marginTop: 25,
-              marginLeft: 10,
-              marginRight: 10,
-              justifyContent: 'center',
-              height: 30,
-            }}
+            style={styles.bottomButton}
             onPress={() => saveInputs(Possible)}
           >
             <Text>Save</Text>
+          </Button>
+          <Button
+            bordered
+            dark
+            style={styles.bottomButton}
+            onPress={() => setInEditMode(!inEditMode)}
+          >
+            <Text>Cancel</Text>
           </Button>
         </View>
       </SafeAreaView>
@@ -330,10 +331,19 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    width: 75,
-    height: 75,
+    width: 50,
+    height: 50,
+    marginBottom: 20,
     justifyContent: 'center',
     alignContent: 'center',
+  },
+  bottomButton: {
+    flex: 3,
+    marginTop: 25,
+    marginLeft: 10,
+    marginRight: 10,
+    justifyContent: 'center',
+    height: 10,
   },
 });
 
