@@ -11,9 +11,10 @@ import {
   ImageSourcePropType,
 } from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import { Container, Content } from 'native-base';
+import { Container, Content, Right } from 'native-base';
 import DMListComponent from './components/DMListComponent';
 import { DMUser } from './App';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 type Props = {
   DMList: DMUser[];
@@ -26,6 +27,9 @@ const Item: FunctionComponent<{ name: string; thumb: ImageSourcePropType }> = ({
   <View style={styles.item}>
     <Image source={thumb} style={styles.profilePicture} />
     <Text style={styles.user}>{name}</Text>
+    <Right style={styles.chatIcon}>
+      <Icon name='ios-chatbubbles' color='lightblue' size={35} />
+    </Right>
   </View>
 );
 
@@ -76,11 +80,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FFFA',
   },
   item: {
+    flex: 1,
     flexDirection: 'row',
     backgroundColor: '#F5FFFA',
-    padding: 10,
-    borderTopWidth: 0.3,
-    borderBottomWidth: 0.3,
+    paddingHorizontal: 17,
+    paddingVertical: 10,
+    // borderTopWidth: 0.3,
+    borderBottomWidth: 0.5,
     borderColor: 'darkgrey',
     // marginVertical: 8
     // marginHorizontal: 16,
@@ -98,8 +104,8 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   flatList: {
-    borderTopWidth: 0.3,
-    borderBottomWidth: 0.3,
+    borderTopWidth: 0.5,
+    // borderBottomWidth: 0.5,
     borderColor: 'darkgrey',
   },
   profilePicture: {
@@ -108,6 +114,9 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderWidth: 0.3,
     borderColor: 'black',
+  },
+  chatIcon: {
+    paddingRight: 15,
   },
 });
 

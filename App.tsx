@@ -41,8 +41,8 @@ const App = () => {
 
   const [DMList, setDMList] = React.useState<Array<DMUser>>([]);
 
-  const handleDMListAdd = ({ Name, Thumb }: DMUser) => {
-    setDMList([{ Name, Thumb }, ...DMList]);
+  const handleDMListAdd = ({ Id, Name, Thumb }: DMUser) => {
+    setDMList([{ Id, Name, Thumb }, ...DMList]);
   };
 
   const handlePotentialAdd = ({ Name, Date, Thumb }: Roommate) => {

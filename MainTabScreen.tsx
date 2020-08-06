@@ -1,16 +1,10 @@
 import React, { FunctionComponent, SetStateAction, Dispatch } from 'react';
-import {
-  createStackNavigator,
-  StackScreenProps,
-} from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import HomeStackScreen from './HomeStackScreen';
 import DMStackScreen from './DMStackScreen';
 import ProfileStackScreen from './ProfileStackScreen';
-import { NavigationProp } from '@react-navigation/native';
-import { ImageSourcePropType } from 'react-native';
 import { Roommate, DMUser } from './App';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -38,6 +32,7 @@ const MainTabScreen: FunctionComponent<Props> = ({
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => (
+            // dont really understand this
             <Icon name='ios-home' color={color} size={26} />
           ),
         }}>

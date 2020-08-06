@@ -5,7 +5,6 @@ import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
 import { AppLoading } from 'expo';
 
 import HomeScreen from './HomeScreen';
-import { ImageSourcePropType } from 'react-native';
 import { DMUser, Roommate } from './App';
 
 // import DMScreen from './DMScreen';

@@ -2,7 +2,6 @@ import React, { FunctionComponent, Dispatch, SetStateAction } from 'react';
 import { StyleSheet, ImageSourcePropType } from 'react-native';
 import { Container, Content } from 'native-base';
 import ScrollComponent from './components/ScrollComponent';
-import { State } from 'react-native-gesture-handler';
 import { Roommate, DMUser } from './App';
 
 type Props = {
