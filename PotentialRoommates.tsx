@@ -13,6 +13,7 @@ import { Container, Content } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PotentialListComponent from './components/PotentialListComponent';
 import { Roommate } from './App';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 // import Category from './components/Category';
 
@@ -44,7 +45,10 @@ const PotentialRoommates: FunctionComponent<{
       visible={props.modalOpen}
       animationType='slide'
       presentationStyle='pageSheet'
-    >
+      onRequestClose={props.onClose}>
+      {/* <TouchableWithoutFeedback
+        style={{ backgroundColor: 'red' }}
+        onPressOut={() => props.onClose()}> */}
       <SafeAreaView style={styles.modalContent}>
         <Icon
           style={styles.modalToggle}
@@ -54,12 +58,14 @@ const PotentialRoommates: FunctionComponent<{
             props.onClose();
           }}
         />
-
-        <Text style={styles.modalTitle}>Potential Roommates:</Text>
+        <View style={{ borderBottomWidth: 1, borderBottomColor: 'lightgrey' }}>
+          <Text style={styles.modalTitle}>Potential Roommates:</Text>
+        </View>
         <Container style={styles.container}>
           <Content>{renderPotentials()}</Content>
         </Container>
       </SafeAreaView>
+      {/* </TouchableWithoutFeedback> */}
     </Modal>
   );
 };
@@ -74,12 +80,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   modalTitle: {
-    marginBottom: 10,
+    marginBottom: 5,
     fontSize: 25,
     fontWeight: 'bold',
     alignSelf: 'center',
   },
   container: {
+    marginTop: 5,
     backgroundColor: '#f8f8ff',
   },
 });
