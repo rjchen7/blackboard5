@@ -11,6 +11,7 @@ import SettingsScreen from './SettingsScreen';
 import { ImageSourcePropType } from 'react-native';
 import ChatScreen from './ChatScreen';
 import { Item } from 'react-native-paper/lib/typescript/src/components/List/List';
+import LoginScreen from './LoginScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -66,8 +67,8 @@ const App = () => {
             potentials={potentials}
             onPotentialRemove={removeListing}
           />
-        )}
-      >
+        )}>
+        <Drawer.Screen name='Login' component={LoginScreen} />
         <Drawer.Screen name='HomeDrawer'>
           {(props) => (
             <MainTabScreen

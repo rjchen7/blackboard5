@@ -15,7 +15,7 @@ type ID = {
 function LoginScreen({ navigation }: { navigation: any }) {
   const Authenicate = ({ Username, Password }: ID) => {
     if (Username == 'RyansMaster' && Password == 'crunch22') {
-      navigation.navigate('Home');
+      navigation.navigate('HomeDrawer');
     }
   };
   const [userPass, setUserPass] = React.useState({
@@ -42,14 +42,12 @@ function LoginScreen({ navigation }: { navigation: any }) {
       <View style={styles.btnContainer}>
         <TouchableOpacity
           style={styles.userBtn}
-          onPress={() => Authenicate(userPass)}
-        >
+          onPress={() => Authenicate(userPass)}>
           <Text style={styles.btnTxt}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.userBtn}
-          onPress={() => alert('Signup Works')}
-        >
+          onPress={() => alert('Signup Works')}>
           <Text style={styles.btnTxt}>Sign Up</Text>
         </TouchableOpacity>
       </View>
