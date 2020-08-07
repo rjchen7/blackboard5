@@ -23,7 +23,7 @@ export type ProfileData = {
 
 let images1 = [
   require('./assets/rookie.jpeg'),
-  require('./assets/scibowl.jpeg'),
+  require('./assets/boomer2g.png'),
   require('./assets/cook.jpeg'),
   require('./assets/imdifferent.jpeg'),
 ];
@@ -32,7 +32,7 @@ let images2 = [
   require('./assets/rookie.jpeg'),
   require('./assets/scibowl.jpeg'),
   require('./assets/cook.jpeg'),
-  require('./assets/imdifferent.jpeg'),
+  require('./assets/unclesam.jpeg'),
 ];
 
 let images3 = [
@@ -105,7 +105,7 @@ const HomeScreen: FunctionComponent<Props> = ({
             })
           }
           modalOpen={profilePopupVisible}
-          images={images1}
+          Images={images1}
           onClose={() => setProfilePopupVisible(false)}
           onProfilePress={() => setProfilePopupVisible(true)}
           onSetProfileData={setProfileData}
@@ -134,7 +134,7 @@ const HomeScreen: FunctionComponent<Props> = ({
             })
           }
           modalOpen={profilePopupVisible}
-          images={images2}
+          Images={images2}
           onClose={() => setProfilePopupVisible(false)}
           onProfilePress={() => setProfilePopupVisible(true)}
           onSetProfileData={setProfileData}
@@ -163,7 +163,7 @@ const HomeScreen: FunctionComponent<Props> = ({
             })
           }
           modalOpen={profilePopupVisible}
-          images={images3}
+          Images={images3}
           onClose={() => setProfilePopupVisible(false)}
           onProfilePress={() => setProfilePopupVisible(true)}
           onSetProfileData={setProfileData}

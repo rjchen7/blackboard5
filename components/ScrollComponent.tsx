@@ -29,6 +29,7 @@ type Props = {
   ImageUri: ImageSourcePropType;
   text: string;
   modalOpen: boolean;
+  Images: ImageSourcePropType[];
   onClose: () => void;
   addPotential: () => void;
   onProfilePress: () => void;
@@ -36,12 +37,12 @@ type Props = {
   addDMUser: () => void;
 };
 
-let images = [
-  require('../assets/rookie.jpeg'),
-  require('../assets/scibowl.jpeg'),
-  require('../assets/cook.jpeg'),
-  require('../assets/crewshot.jpeg'),
-];
+// let images = [
+//   require('../assets/rookie.jpeg'),
+//   require('../assets/scibowl.jpeg'),
+//   require('../assets/cook.jpeg'),
+//   require('../assets/crewshot.jpeg'),
+// ];
 
 let dummyDescription = {
   Bio: 'Penis',
@@ -57,6 +58,7 @@ const ScrollComponent: FunctionComponent<Props> = ({
   ImageUri,
   text,
   modalOpen,
+  Images,
   // onClose,
   addPotential,
   onProfilePress,
@@ -74,11 +76,12 @@ const ScrollComponent: FunctionComponent<Props> = ({
               onSetProfileData({
                 Name: Name,
                 Thumb: Thumb,
-                Images: images,
+                Images: Images,
                 Description: dummyDescription,
               });
               onProfilePress();
-            }}>
+            }}
+          >
             <Thumbnail source={Thumb} />
           </TouchableOpacity>
           <Body>
