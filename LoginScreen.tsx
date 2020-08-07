@@ -48,12 +48,14 @@ const LoginScreen: FunctionComponent<Props> = ({
       <View style={styles.btnContainer}>
         <TouchableOpacity
           style={styles.userBtn}
-          onPress={() => Authenticate(userPass)}>
+          onPress={() => Authenticate(userPass)}
+        >
           <Text style={styles.btnTxt}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.userBtn}
-          onPress={() => alert('Signup not available for demo.')}>
+          onPress={() => alert('Signup not available for demo.')}
+        >
           <Text style={styles.btnTxt}>Sign Up</Text>
         </TouchableOpacity>
       </View>

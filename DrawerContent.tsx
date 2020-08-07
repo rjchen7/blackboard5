@@ -29,11 +29,11 @@ const DrawerContent: FunctionComponent<Props> = ({
   setUserPass,
 }) => {
   // creating state isDarkTheme
-  const [isDarkTheme, setIsDarkTheme] = React.useState(false);
+  const [isSearching, setIsSearching] = React.useState(false);
 
   // on switch isDarkTheme will be set to the opposite boolean value
-  const toggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
+  const toggleSearch = () => {
+    setIsSearching(!isSearching);
   };
 
   // state for if Potential Roommates Modal
@@ -123,15 +123,16 @@ const DrawerContent: FunctionComponent<Props> = ({
               }}
             />
           </Drawer.Section>
-          <Drawer.Section title='Preferences'>
+          <Drawer.Section title='Status'>
             <TouchableRipple
               onPress={() => {
-                toggleTheme();
-              }}>
+                toggleSearch();
+              }}
+            >
               <View style={styles.preference}>
-                <Text>Dark Mode</Text>
+                <Text>Actively Searching</Text>
                 <View pointerEvents='none'>
-                  <Switch value={isDarkTheme} />
+                  <Switch value={isSearching} />
                 </View>
               </View>
             </TouchableRipple>
