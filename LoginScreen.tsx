@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import {
   StyleSheet,
   View,
@@ -12,7 +12,7 @@ type ID = {
   Username: string;
   Password: string;
 };
-function LoginScreen({ navigation }: { navigation: any }) {
+const LoginScreen: FunctionComponent<any> = ({ navigation }) => {
   const Authenicate = ({ Username, Password }: ID) => {
     if (Username == 'RyansMaster' && Password == 'crunch22') {
       navigation.navigate('HomeDrawer');
@@ -53,7 +53,7 @@ function LoginScreen({ navigation }: { navigation: any }) {
       </View>
     </View>
   );
-}
+};
 
 export default LoginScreen;
 
