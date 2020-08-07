@@ -132,15 +132,17 @@ const DrawerContent: FunctionComponent<any> = ({
           </Drawer.Section>
         </View>
       </DrawerContentScrollView>
-      {/* <Drawer.Section style={styles.bottomDrawerSection}>
+      <Drawer.Section style={styles.bottomDrawerSection}>
         <DrawerItem
           icon={({ color, size }) => (
             <Icon name='exit-to-app' color={color} size={size} />
           )}
-          label='Andy is microgang'
-          onPress={() => {}}
+          label='Logout'
+          onPress={() => {
+            navigation.navigate('Login');
+          }}
         />
-      </Drawer.Section> */}
+      </Drawer.Section>
     </View>
   );
 };

@@ -16,6 +16,8 @@ const LoginScreen: FunctionComponent<any> = ({ navigation }) => {
   const Authenicate = ({ Username, Password }: ID) => {
     if (Username == 'RyansMaster' && Password == 'crunch22') {
       navigation.navigate('HomeDrawer');
+    } else {
+      alert('Incorrect Username or Password');
     }
   };
   const [userPass, setUserPass] = React.useState({
@@ -42,12 +44,14 @@ const LoginScreen: FunctionComponent<any> = ({ navigation }) => {
       <View style={styles.btnContainer}>
         <TouchableOpacity
           style={styles.userBtn}
-          onPress={() => Authenicate(userPass)}>
+          onPress={() => Authenicate(userPass)}
+        >
           <Text style={styles.btnTxt}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.userBtn}
-          onPress={() => alert('Signup Works')}>
+          onPress={() => alert('Signup not available for demo.')}
+        >
           <Text style={styles.btnTxt}>Sign Up</Text>
         </TouchableOpacity>
       </View>
