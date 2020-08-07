@@ -126,6 +126,7 @@ const HomeScreen: FunctionComponent<Props> = ({
             onSetChatId(1);
             onSetChatName('El Truco');
             navigation.navigate('DM', { screen: 'Chat' });
+            // why does navigation.navigate('Chat') cause an error the first time
           }}
         />
         <ScrollComponent
