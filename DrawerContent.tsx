@@ -60,17 +60,17 @@ const DrawerContent: FunctionComponent<Props> = ({
             <View style={styles.row}>
               <View style={styles.section}>
                 <Paragraph style={[styles.paragraph, styles.caption]}>
-                  wo fucking
+                  Currently
                 </Paragraph>
-                <Caption style={styles.caption}>dumb</Caption>
+                <Caption style={styles.caption}>Chou Yan Mei Tian</Caption>
               </View>
 
-              <View style={styles.section}>
+              {/* <View style={styles.section}>
                 <Paragraph style={[styles.paragraph, styles.caption]}>
-                  I like
+                  Looking to
                 </Paragraph>
-                <Caption style={styles.caption}>pp</Caption>
-              </View>
+                <Caption style={styles.caption}>Pi Gu</Caption>
+              </View> */}
             </View>
           </View>
 
