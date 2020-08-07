@@ -13,9 +13,11 @@ import { Message } from './MainTabScreen';
 type Props = {
   navigation: any;
   DMList: DMUser[];
-  messagesMap: any;
+  messagesMap: Map<number, Message[]>;
   chatId: number;
   chatName: string;
+  onSetChatId: React.Dispatch<React.SetStateAction<number>>;
+  onSetChatName: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const DMStack = createStackNavigator();
@@ -26,13 +28,15 @@ const DMStackScreen: FunctionComponent<Props> = ({
   messagesMap,
   chatId,
   chatName,
+  onSetChatId,
+  onSetChatName,
 }) => {
   // if 0 then load the DmScreen, if any number then load the chat screen associated with the Id
 
   const renderChatScreen = () => {
     return (
       <ChatScreen
-        messagesInput={messagesMap.get(chatId)}
+        messagesInput={messagesMap.get(chatId) || []}
         // onMessageRetrieval={handleMessageRetrieval}
       />
     );
@@ -60,7 +64,14 @@ const DMStackScreen: FunctionComponent<Props> = ({
               onPress={() => navigation.openDrawer()}></Icon.Button>
           ),
         }}>
-        {(props) => <DMScreen {...props} DMList={DMList} />}
+        {(props) => (
+          <DMScreen
+            {...props}
+            DMList={DMList}
+            onSetChatId={onSetChatId}
+            onSetChatName={onSetChatName}
+          />
+        )}
       </DMStack.Screen>
       <DMStack.Screen
         name='Chat'

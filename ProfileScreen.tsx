@@ -205,7 +205,7 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{ flex: 1, backgroundColor: '#F5FFFA' }}>
       <View>
         <View
           style={{

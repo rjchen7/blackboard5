@@ -18,38 +18,55 @@ import Icon from 'react-native-vector-icons/Ionicons';
 type Props = {
   navigation: any;
   DMList: DMUser[];
+  onSetChatId: React.Dispatch<React.SetStateAction<number>>;
+  onSetChatName: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const Item: FunctionComponent<{
-  navigate: any;
-  name: string;
-  thumb: ImageSourcePropType;
-}> = ({ navigate, name, thumb }) => (
-  <TouchableOpacity onPress={navigate}>
-    <View style={styles.item}>
-      <Image source={thumb} style={styles.profilePicture} />
-      <Text style={styles.user}>{name}</Text>
-      <Right style={styles.chatIcon}>
-        <Icon name='ios-chatbubbles' color='lightblue' size={35} />
-      </Right>
-    </View>
-  </TouchableOpacity>
-);
-
-const DMScreen: FunctionComponent<Props> = ({ navigation, DMList }) => {
+const DMScreen: FunctionComponent<Props> = ({
+  navigation,
+  DMList,
+  onSetChatId,
+  onSetChatName,
+}) => {
   const [searchQuery, setSearchQuery] = React.useState('');
 
   const onChangeSearch = (query: string) => {
     setSearchQuery(query);
   };
 
-  const renderItem: FunctionComponent<{ item: DMUser }> = ({ item }) => (
-    <Item
-      navigate={() => navigation.navigate('Chat')}
-      name={item.Name}
-      thumb={item.Thumb}
-    />
+  const Item: FunctionComponent<{
+    navigate: any;
+    Id: number;
+    name: string;
+    thumb: ImageSourcePropType;
+  }> = ({ navigate, Id, name, thumb }) => (
+    <TouchableOpacity
+      onPress={() => {
+        onSetChatId(Id);
+        onSetChatName(name);
+        navigate();
+      }}>
+      <View style={styles.item}>
+        <Image source={thumb} style={styles.profilePicture} />
+        <Text style={styles.user}>{name}</Text>
+        <Right style={styles.chatIcon}>
+          <Icon name='ios-chatbubbles' color='lightblue' size={35} />
+        </Right>
+      </View>
+    </TouchableOpacity>
   );
+
+  // renders every entry in the DMScreenu
+  const renderItem: FunctionComponent<{ item: DMUser }> = ({ item }) => {
+    return (
+      <Item
+        navigate={() => navigation.navigate('Chat')}
+        Id={item.Id}
+        name={item.Name}
+        thumb={item.Thumb}
+      />
+    );
+  };
 
   return (
     <View style={styles.container}>

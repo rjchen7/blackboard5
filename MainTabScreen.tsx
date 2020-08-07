@@ -107,6 +107,8 @@ const MainTabScreen: FunctionComponent<Props> = ({
             messagesMap={messagesMap}
             chatId={chatId}
             chatName={chatName}
+            onSetChatId={setChatId}
+            onSetChatName={setChatName}
           />
         )}
       </Tab.Screen>
