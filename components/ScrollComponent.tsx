@@ -18,9 +18,8 @@ import {
 } from 'native-base';
 
 // import DMScreen from '../DMScreen';
-import { accessibilityProps } from 'react-native-paper/lib/typescript/src/components/MaterialCommunityIcon';
-import { useNavigation } from '@react-navigation/native';
-import { Roommate } from '../App';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import ProfilePopup from '../ProfilePopup';
 
 type Props = {
   Name: string;
@@ -28,9 +27,19 @@ type Props = {
   Thumb: ImageSourcePropType;
   ImageUri: ImageSourcePropType;
   text: string;
+  modalOpen: boolean;
+  onClose: () => void;
   addPotential: () => void;
+  onProfilePopupOpen: () => void;
   addDMUser: () => void;
 };
+
+let images = [
+  require('../assets/rookie.jpeg'),
+  require('../assets/scibowl.jpeg'),
+  require('../assets/cook.jpeg'),
+  require('../assets/crewshot.jpeg'),
+];
 
 const ScrollComponent: FunctionComponent<Props> = ({
   Name,
@@ -38,7 +47,10 @@ const ScrollComponent: FunctionComponent<Props> = ({
   Thumb,
   ImageUri,
   text,
+  modalOpen,
+  onClose,
   addPotential,
+  onProfilePopupOpen,
   addDMUser,
 }) => {
   // const navigation = useNavigation();
@@ -46,8 +58,23 @@ const ScrollComponent: FunctionComponent<Props> = ({
   return (
     <Card>
       <CardItem>
+        <ProfilePopup
+          modalOpen={modalOpen}
+          onClose={onClose}
+          Name={Name}
+          Thumb={Thumb}
+          Images={images}
+          Description={{
+            Bio: 'Penis',
+            SleepSchedule: 'Pussy',
+            Habits: 'penis',
+            Activities: 'Pussy',
+          }}
+        />
         <Left>
-          <Thumbnail source={Thumb}></Thumbnail>
+          <TouchableOpacity onPress={onProfilePopupOpen}>
+            <Thumbnail source={Thumb}></Thumbnail>
+          </TouchableOpacity>
           <Body>
             <Text>{Name}</Text>
             <Text>{Date}</Text>

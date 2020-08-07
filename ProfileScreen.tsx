@@ -10,10 +10,7 @@ import {
 } from 'react-native';
 import { Divider } from 'react-native-elements';
 import { Button } from 'native-base';
-
 import Icon from 'react-native-vector-icons/Ionicons';
-import { State } from 'react-native-gesture-handler';
-import EditProfileScreen from './EditProfileScreen';
 
 let images = [
   require('./assets/rookie.jpeg'),
@@ -29,15 +26,17 @@ type Description = {
   Habits: string;
   Activities: string;
 };
-const title = 'Professional Boomer';
 
-const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
+const ProfileScreen: FunctionComponent<any> = () => {
   const [active, setActive] = React.useState(false);
   const [state, setState] = React.useState({
-    Bio: 'Air',
-    SleepSchedule: 'Rick',
-    Habits: 'Inthe',
-    Activities: 'Dick',
+    Bio:
+      'I like to plant weeds in your garden and crack into your backpack. These are the only things I like to do for personal enjoyment.',
+    SleepSchedule:
+      'I don’t really sleep, and I expect you to not sleep either. I need someone to change my underwear (with no pay) while I play League of Legends late into the night.',
+    Habits:
+      'No drugs or alcohol allowed in this room! I sometimes use them, but I get jealous when other people do.',
+    Activities: 'I like to spend all my time in the room and on your bed.',
   });
   const [inEditMode, setInEditMode] = React.useState(false);
 
@@ -53,40 +52,40 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
               borderColor: 'black',
               width: undefined,
               height: undefined,
-            }}></Image>
+            }}
+          ></Image>
         </View>
       );
     });
   };
 
-  const saveChanges = () => {};
-
   const renderSectionTwo = () => {
     return (
       <SafeAreaView style={styles.container}>
         <Text
-          style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 24 }}>
+          style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 24 }}
+        >
           Preferences
         </Text>
         <Divider style={styles.divider} />
         <View style={styles.icon}>
           <Icon name='ios-book' size={30}></Icon>
-          <Text>{state.Bio}</Text>
+          <Text style={styles.desc}>{state.Bio}</Text>
         </View>
         <Divider style={styles.divider} />
         <View style={styles.icon}>
           <Icon name='ios-clock' size={30}></Icon>
-          <Text>{state.SleepSchedule}</Text>
+          <Text style={styles.desc}>{state.SleepSchedule}</Text>
         </View>
         <Divider style={styles.divider} />
         <View style={styles.icon}>
           <Icon name='ios-beer' size={30}></Icon>
-          <Text>{state.Habits}</Text>
+          <Text style={styles.desc}>{state.Habits}</Text>
         </View>
         <Divider style={styles.divider} />
         <View style={styles.icon}>
           <Icon name='ios-baseball' size={30}></Icon>
-          <Text>{state.Activities}</Text>
+          <Text style={styles.desc}>{state.Activities}</Text>
         </View>
       </SafeAreaView>
     );
@@ -144,7 +143,8 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
               alignContent: 'center',
               fontWeight: 'bold',
               fontSize: 24,
-            }}>
+            }}
+          >
             Preferences
           </Text>
           <Divider style={styles.divider} />
@@ -189,14 +189,16 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
             bordered
             dark
             style={styles.bottomButton}
-            onPress={() => saveInputs(Possible)}>
+            onPress={() => saveInputs(Possible)}
+          >
             <Text>Save</Text>
           </Button>
           <Button
             bordered
             dark
             style={styles.bottomButton}
-            onPress={() => setInEditMode(!inEditMode)}>
+            onPress={() => setInEditMode(!inEditMode)}
+          >
             <Text>Cancel</Text>
           </Button>
         </View>
@@ -213,14 +215,16 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
             paddingLeft: 10,
             paddingBottom: 10,
             paddingRight: 10,
-          }}>
+          }}
+        >
           <View style={{ flexDirection: 'row' }}>
             <View
               style={{
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}>
+              }}
+            >
               <Image
                 source={require('./assets/datway.jpeg')}
                 style={styles.profilePicture}
@@ -240,7 +244,8 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
                 justifyContent: 'center',
                 height: 30,
               }}
-              onPress={() => setInEditMode(!inEditMode)}>
+              onPress={() => setInEditMode(!inEditMode)}
+            >
               <Text>Edit Profile</Text>
             </Button>
           </View>
@@ -253,12 +258,14 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
               justifyContent: 'space-around',
               borderTopWidth: 1,
               borderTopColor: '#eae5e5',
-            }}>
+            }}
+          >
             <Button
               transparent
               onPress={() => {
                 setActive(false);
-              }}>
+              }}
+            >
               <Icon
                 style={[active == false ? { color: 'teal' } : {}]}
                 name='ios-clipboard'
@@ -269,7 +276,8 @@ const ProfileScreen: FunctionComponent<any> = ({ navigation }) => {
               transparent
               onPress={() => {
                 setActive(true);
-              }}>
+              }}
+            >
               <Icon
                 name='ios-expand'
                 style={[active == true ? { color: 'teal' } : {}]}
