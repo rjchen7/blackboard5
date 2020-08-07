@@ -20,6 +20,7 @@ import {
 // import DMScreen from '../DMScreen';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ProfilePopup from '../ProfilePopup';
+import { ProfileData } from '../HomeScreen';
 
 type Props = {
   Name: string;
@@ -30,7 +31,8 @@ type Props = {
   modalOpen: boolean;
   onClose: () => void;
   addPotential: () => void;
-  onProfilePopupOpen: () => void;
+  onProfilePress: () => void;
+  onSetProfileData: React.Dispatch<React.SetStateAction<ProfileData>>;
   addDMUser: () => void;
 };
 
@@ -41,6 +43,13 @@ let images = [
   require('../assets/crewshot.jpeg'),
 ];
 
+let dummyDescription = {
+  Bio: 'Penis',
+  SleepSchedule: 'Pussy',
+  Habits: 'penis',
+  Activities: 'Pussy',
+};
+
 const ScrollComponent: FunctionComponent<Props> = ({
   Name,
   Date,
@@ -48,9 +57,10 @@ const ScrollComponent: FunctionComponent<Props> = ({
   ImageUri,
   text,
   modalOpen,
-  onClose,
+  // onClose,
   addPotential,
-  onProfilePopupOpen,
+  onProfilePress,
+  onSetProfileData,
   addDMUser,
 }) => {
   // const navigation = useNavigation();
@@ -58,22 +68,18 @@ const ScrollComponent: FunctionComponent<Props> = ({
   return (
     <Card>
       <CardItem>
-        <ProfilePopup
-          modalOpen={modalOpen}
-          onClose={onClose}
-          Name={Name}
-          Thumb={Thumb}
-          Images={images}
-          Description={{
-            Bio: 'Penis',
-            SleepSchedule: 'Pussy',
-            Habits: 'penis',
-            Activities: 'Pussy',
-          }}
-        />
         <Left>
-          <TouchableOpacity onPress={onProfilePopupOpen}>
-            <Thumbnail source={Thumb}></Thumbnail>
+          <TouchableOpacity
+            onPress={() => {
+              onSetProfileData({
+                Name: Name,
+                Thumb: Thumb,
+                Images: images,
+                Description: dummyDescription,
+              });
+              onProfilePress();
+            }}>
+            <Thumbnail source={Thumb} />
           </TouchableOpacity>
           <Body>
             <Text>{Name}</Text>

@@ -8,8 +8,9 @@ import {
   Button,
 } from 'react-native';
 import ProfileComponent from './components/ProfileComponent';
+import { ProfileData } from './HomeScreen';
 
-type Description = {
+export type Description = {
   Bio: string;
   SleepSchedule: string;
   Habits: string;
@@ -19,35 +20,23 @@ type Description = {
 type Props = {
   modalOpen: boolean;
   onClose: () => void;
-  Name: string;
-  Thumb: ImageSourcePropType;
-  Images: ImageSourcePropType[];
-  Description: Description;
+  profileData: ProfileData;
 };
 
-const ProfilePopup = ({
-  modalOpen,
-  onClose,
-  Name,
-  Thumb,
-  Images,
-  Description,
-}: Props) => {
+const ProfilePopup = ({ modalOpen, onClose, profileData }: Props) => {
   return (
     <Modal
       visible={modalOpen}
       animationType='slide'
-      presentationStyle='pageSheet'
-      // onRequestClose={() => onClose}
-    >
+      presentationStyle='pageSheet'>
       <View>
         <Button title='x' onPress={onClose} />
       </View>
       <ProfileComponent
-        Name={Name}
-        Thumb={Thumb}
-        Images={Images}
-        Description={Description}
+        Name={profileData.Name}
+        Thumb={profileData.Thumb}
+        Images={profileData.Images}
+        Description={profileData.Description}
       />
     </Modal>
   );

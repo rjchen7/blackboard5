@@ -1,10 +1,10 @@
 import React, { FunctionComponent, Dispatch, SetStateAction } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ImageSourcePropType } from 'react-native';
 import { Container, Content } from 'native-base';
 import ScrollComponent from './components/ScrollComponent';
 import { Roommate, DMUser } from './App';
 import ProfileComponent from './components/PotentialListComponent';
-import ProfilePopup from './ProfilePopup';
+import ProfilePopup, { Description } from './ProfilePopup';
 
 type Props = {
   navigation: any;
@@ -13,6 +13,20 @@ type Props = {
   onSetChatId: React.Dispatch<React.SetStateAction<number>>;
   onSetChatName: React.Dispatch<React.SetStateAction<string>>;
 };
+
+export type ProfileData = {
+  Name: string;
+  Thumb: ImageSourcePropType;
+  Images: ImageSourcePropType[];
+  Description: Description;
+};
+
+let images = [
+  require('./assets/rookie.jpeg'),
+  require('./assets/scibowl.jpeg'),
+  require('./assets/cook.jpeg'),
+  require('./assets/crewshot.jpeg'),
+];
 
 const HomeScreen: FunctionComponent<Props> = ({
   navigation,
@@ -28,42 +42,27 @@ const HomeScreen: FunctionComponent<Props> = ({
     require('./assets/cook.jpeg'),
     require('./assets/crewshot.jpeg'),
   ];
-  const ProfilePopUp = () => {
-    setProfilePopupVisible(true);
-    return (
-      <View>
-        <ProfilePopup
-          modalOpen={profilePopupVisible}
-          onClose={() => setProfilePopupVisible(false)}
-          Name='El Truco'
-          Thumb={require('./assets/boomer2g.png')}
-          Images={images}
-          Description={{
-            Bio: 'Penis',
-            SleepSchedule: 'Pussy',
-            Habits: 'penis',
-            Activities: 'pussy',
-          }}
-        />
-      </View>
-    );
-  };
+
+  const [profileData, setProfileData] = React.useState({
+    Name: 'Test',
+    Thumb: require('./assets/boomer2g.png'),
+    Images: images,
+    Description: {
+      Bio: 'Penis',
+      SleepSchedule: 'Pussy',
+      Habits: 'penis',
+      Activities: 'pussy',
+    },
+  });
+
   return (
     <Container style={styles.container}>
       <Content>
-        {/* <ProfilePopup
+        <ProfilePopup
           modalOpen={profilePopupVisible}
           onClose={() => setProfilePopupVisible(false)}
-          Name='El Truco'
-          Thumb={require('./assets/boomer2g.png')}
-          Images={images}
-          Description={{
-            Bio: 'Penis',
-            SleepSchedule: 'Pussy',
-            Habits: 'penis',
-            Activities: 'pussy',
-          }}
-        /> */}
+          profileData={profileData}
+        />
         <ScrollComponent
           Name='El Truco'
           Date='August 1, 2021'
@@ -79,7 +78,8 @@ const HomeScreen: FunctionComponent<Props> = ({
           }
           modalOpen={profilePopupVisible}
           onClose={() => setProfilePopupVisible(false)}
-          onProfilePopupOpen={() => setProfilePopupVisible(true)}
+          onProfilePress={() => setProfilePopupVisible(true)}
+          onSetProfileData={setProfileData}
           addDMUser={() => {
             onDMListAdd({
               Id: 1,
@@ -106,7 +106,8 @@ const HomeScreen: FunctionComponent<Props> = ({
           }
           modalOpen={profilePopupVisible}
           onClose={() => setProfilePopupVisible(false)}
-          onProfilePopupOpen={() => setProfilePopupVisible(true)}
+          onProfilePress={() => setProfilePopupVisible(true)}
+          onSetProfileData={setProfileData}
           addDMUser={() => {
             onDMListAdd({
               Id: 2,
@@ -133,7 +134,8 @@ const HomeScreen: FunctionComponent<Props> = ({
           }
           modalOpen={profilePopupVisible}
           onClose={() => setProfilePopupVisible(false)}
-          onProfilePopupOpen={() => setProfilePopupVisible(true)}
+          onProfilePress={() => setProfilePopupVisible(true)}
+          onSetProfileData={setProfileData}
           addDMUser={() => {
             onDMListAdd({
               Id: 3,
