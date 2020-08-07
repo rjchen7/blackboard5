@@ -8,12 +8,16 @@ type Props = {
   navigation: any;
   onPotentialAdd: ({ Name, Date, Thumb }: Roommate) => void;
   onDMListAdd: ({ Name, Thumb }: DMUser) => void;
+  onSetChatId: React.Dispatch<React.SetStateAction<number>>;
+  onSetChatName: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const HomeScreen: FunctionComponent<Props> = ({
   navigation,
   onPotentialAdd,
   onDMListAdd,
+  onSetChatId,
+  onSetChatName,
 }) => {
   return (
     <Container style={styles.container}>
@@ -24,21 +28,21 @@ const HomeScreen: FunctionComponent<Props> = ({
           Thumb={require('./assets/boomer2g.png')}
           ImageUri={require('./assets/eltrollo.jpeg')}
           text=' BALLSACK!'
-          addPotential={
-            () =>
-              onPotentialAdd({
-                Name: 'El Truco',
-                Date: 'August 1, 2021',
-                Thumb: require('./assets/boomer2g.png'),
-              })
-            // console.log(6)
+          addPotential={() =>
+            onPotentialAdd({
+              Name: 'El Truco',
+              Date: 'August 1, 2021',
+              Thumb: require('./assets/boomer2g.png'),
+            })
           }
           addDMUser={() => {
             onDMListAdd({
-              Id: '1',
+              Id: 1,
               Name: 'El Truco',
               Thumb: require('./assets/boomer2g.png'),
             });
+            onSetChatId(1);
+            onSetChatName('El Truco');
             navigation.navigate('DM');
           }}
         />
@@ -57,10 +61,12 @@ const HomeScreen: FunctionComponent<Props> = ({
           }
           addDMUser={() => {
             onDMListAdd({
-              Id: '2',
+              Id: 2,
               Name: 'Rue Grandpa',
               Thumb: require('./assets/thegang.jpg'),
             });
+            onSetChatId(2);
+            onSetChatName('Rue Grandpa');
             navigation.navigate('DM');
           }}
         />
@@ -79,10 +85,12 @@ const HomeScreen: FunctionComponent<Props> = ({
           }
           addDMUser={() => {
             onDMListAdd({
-              Id: '3',
+              Id: 3,
               Name: '2 Chainz',
               Thumb: require('./assets/2chainz.jpeg'),
             });
+            onSetChatId(3);
+            onSetChatName('2 Chainz');
             navigation.navigate('DM');
           }}
         />

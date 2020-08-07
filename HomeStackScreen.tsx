@@ -14,7 +14,9 @@ import { DMUser, Roommate } from './App';
 type Props = {
   navigation: any;
   onPotentialAdd: ({ Name, Date, Thumb }: Roommate) => void;
-  onDMListAdd: ({ Name, Thumb }: DMUser) => void;
+  onDMListAdd: ({ Id, Name, Thumb }: DMUser) => void;
+  onSetChatId: React.Dispatch<React.SetStateAction<number>>;
+  onSetChatName: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const HomeStack = createStackNavigator();
@@ -23,6 +25,8 @@ const HomeStackScreen: FunctionComponent<Props> = ({
   navigation,
   onPotentialAdd,
   onDMListAdd,
+  onSetChatId,
+  onSetChatName,
 }) => {
   let [fontsLoaded] = useFonts({
     Inter_900Black,
@@ -59,6 +63,8 @@ const HomeStackScreen: FunctionComponent<Props> = ({
             {...props}
             onPotentialAdd={onPotentialAdd}
             onDMListAdd={onDMListAdd}
+            onSetChatId={onSetChatId}
+            onSetChatName={onSetChatName}
           />
         )}
       </HomeStack.Screen>

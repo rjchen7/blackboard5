@@ -19,7 +19,7 @@ export type Roommate = {
 };
 
 export type DMUser = {
-  Id: string;
+  Id: number;
   Name: string;
   Thumb: ImageSourcePropType;
 };
