@@ -59,7 +59,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName='Home'
+        initialRouteName='Login'
         drawerContent={(props) => (
           <DrawerContent
             {...props}

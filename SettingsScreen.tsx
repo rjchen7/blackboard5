@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
-const SettingsScreen = () => {
+const SettingsScreen = (navigation: { navigation: any }) => {
   return (
     <View>
       <Text>Settings Screen</Text>
