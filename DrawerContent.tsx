@@ -29,7 +29,7 @@ const DrawerContent: FunctionComponent<Props> = ({
   setUserPass,
 }) => {
   // creating state isDarkTheme
-  const [isSearching, setIsSearching] = React.useState(false);
+  const [isSearching, setIsSearching] = React.useState(true);
 
   // on switch isDarkTheme will be set to the opposite boolean value
   const toggleSearch = () => {
@@ -127,8 +127,7 @@ const DrawerContent: FunctionComponent<Props> = ({
             <TouchableRipple
               onPress={() => {
                 toggleSearch();
-              }}
-            >
+              }}>
               <View style={styles.preference}>
                 <Text>Actively Searching</Text>
                 <View pointerEvents='none'>

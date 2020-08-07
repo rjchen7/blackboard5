@@ -9,11 +9,13 @@ import DMScreen from './DMScreen';
 import ChatScreen from './ChatScreen';
 import { DMUser } from './App';
 import { Message } from './MainTabScreen';
+import { useIsFocused } from '@react-navigation/native';
 
 type Props = {
   navigation: any;
   DMList: DMUser[];
   messagesMap: Map<number, Message[]>;
+  onMessageRetrieval: (messages: Message[]) => void;
   chatId: number;
   chatName: string;
   onSetChatId: React.Dispatch<React.SetStateAction<number>>;
@@ -26,6 +28,7 @@ const DMStackScreen: FunctionComponent<Props> = ({
   navigation,
   DMList,
   messagesMap,
+  onMessageRetrieval,
   chatId,
   chatName,
   onSetChatId,
@@ -36,8 +39,9 @@ const DMStackScreen: FunctionComponent<Props> = ({
   const renderChatScreen = () => {
     return (
       <ChatScreen
+        navigation={navigation}
         messagesInput={messagesMap.get(chatId) || []}
-        // onMessageRetrieval={handleMessageRetrieval}
+        onMessageRetrieval={onMessageRetrieval}
       />
     );
   };
@@ -46,10 +50,13 @@ const DMStackScreen: FunctionComponent<Props> = ({
     <DMStack.Navigator
       initialRouteName='DM'
       screenOptions={{
-        headerStyle: { backgroundColor: 'black' },
+        headerStyle: { backgroundColor: '#1A1919' },
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontFamily: 'Billabong',
+          fontSize: 35,
+          color: '#f8f8ff',
         },
       }}>
       <DMStack.Screen
@@ -60,8 +67,9 @@ const DMStackScreen: FunctionComponent<Props> = ({
             <Icon.Button
               name='ios-menu'
               size={25}
-              backgroundColor='black'
-              onPress={() => navigation.openDrawer()}></Icon.Button>
+              backgroundColor='#1A1919'
+              onPress={() => navigation.openDrawer()}
+            />
           ),
         }}>
         {(props) => (
@@ -77,6 +85,9 @@ const DMStackScreen: FunctionComponent<Props> = ({
         name='Chat'
         options={{
           title: chatName,
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
           headerLeft: () => (
             <HeaderBackButton
               label="DM's"

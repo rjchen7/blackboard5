@@ -6,6 +6,7 @@ import {
   Button,
   TextInput,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 import { ID } from './App';
 
@@ -29,7 +30,14 @@ const LoginScreen: FunctionComponent<Props> = ({
   };
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={styles.container}>
+      {/* <ImageBackground
+        source={require('./assets/chalkboard-background.jpeg')}
+        > */}
+      <View style={{ justifyContent: 'center' }}>
+        <Text style={styles.title}>Blackboard</Text>
+      </View>
+
       <TextInput
         style={styles.input}
         placeholder='Username'
@@ -48,17 +56,16 @@ const LoginScreen: FunctionComponent<Props> = ({
       <View style={styles.btnContainer}>
         <TouchableOpacity
           style={styles.userBtn}
-          onPress={() => Authenticate(userPass)}
-        >
+          onPress={() => Authenticate(userPass)}>
           <Text style={styles.btnTxt}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.userBtn}
-          onPress={() => alert('Signup not available for demo.')}
-        >
+          onPress={() => alert('Signup not available for demo.')}>
           <Text style={styles.btnTxt}>Sign Up</Text>
         </TouchableOpacity>
       </View>
+      {/* </ImageBackground> */}
     </View>
   );
 };
@@ -68,20 +75,22 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
-    backgroundColor: '#eaeaea',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#1A1919',
+  },
+  image: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
   title: {
     marginTop: 16,
     paddingVertical: 8,
-    borderWidth: 4,
-    borderColor: '#20232a',
-    borderRadius: 6,
-    backgroundColor: '#61dafb',
-    color: '#20232a',
-    textAlign: 'center',
-    fontSize: 30,
+    fontFamily: 'Billabong',
     fontWeight: 'bold',
+    fontSize: 80,
+    color: '#f8f8f8',
   },
   input: {
     width: '90%',
@@ -90,7 +99,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   userBtn: {
-    backgroundColor: '#FFD700',
+    backgroundColor: '#F5FFFA',
     padding: 15,
     width: '45%',
   },

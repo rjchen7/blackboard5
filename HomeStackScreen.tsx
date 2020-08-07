@@ -1,13 +1,9 @@
-import React, { FunctionComponent, Dispatch, SetStateAction } from 'react';
+import React, { FunctionComponent } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
-import { AppLoading } from 'expo';
 
 import HomeScreen from './HomeScreen';
 import { DMUser, Roommate } from './App';
-
-// import DMScreen from './DMScreen';
 
 // the reason it is navigation.navigate('DM') is because in the DMStackScreen component it is named DM
 
@@ -28,21 +24,16 @@ const HomeStackScreen: FunctionComponent<Props> = ({
   onSetChatId,
   onSetChatName,
 }) => {
-  let [fontsLoaded] = useFonts({
-    Inter_900Black,
-  });
-
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
   return (
     <HomeStack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: 'black' },
+        headerStyle: { backgroundColor: '#1A1919' },
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
-          fontFamily: 'Inter_900Black',
+          fontFamily: 'Billabong',
+          fontSize: 35,
+          color: '#f8f8ff',
         },
       }}>
       <HomeStack.Screen
@@ -53,7 +44,7 @@ const HomeStackScreen: FunctionComponent<Props> = ({
             <Icon.Button
               name='ios-menu'
               size={25}
-              backgroundColor='black'
+              backgroundColor='#1A1919'
               onPress={() => navigation.openDrawer()}
             />
           ),

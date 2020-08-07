@@ -2,11 +2,12 @@ import React, { FunctionComponent, useCallback } from 'react';
 import { Bubble, GiftedChat } from 'react-native-gifted-chat';
 import { Message } from './MainTabScreen';
 import { View } from 'react-native';
+import { useFocusEffect, useIsFocused } from '@react-navigation/native';
 
 type ChatScreenProps = {
-  // navigation: any;
+  navigation: any;
   messagesInput: Message[];
-  // onMessageRetrieval: (messages: Message[]) => void;
+  onMessageRetrieval: (messages: Message[]) => void;
 };
 
 const renderBubble: FunctionComponent<any> = (props) => {
@@ -33,33 +34,22 @@ const renderBubble: FunctionComponent<any> = (props) => {
   );
 };
 
-const ChatScreen = ({ messagesInput = [] }: ChatScreenProps) => {
+const ChatScreen = ({
+  navigation,
+  messagesInput = [],
+  onMessageRetrieval,
+}: ChatScreenProps) => {
   const [messages, setMessages] = React.useState(messagesInput);
 
-  // console.log(messagesInput[0]);
+  // if (useIsFocused() == false) {
+  //   navigation.
+  // }
 
-  // const [messages, setMessages] = React.useState([
-  //   {
-  //     _id: 1,
-  //     text: 'youre so gay that you can gay the gay',
-  //     createdAt: new Date(),
-  //     user: {
-  //       _id: 2,
-  //       name: 'El Truco',
-  //       avatar: require('./assets/eltrollo.jpeg'),
-  //     },
-  //   },
-  //   {
-  //     _id: 2,
-  //     text: 'Hello Andy the faggot!',
-  //     createdAt: new Date(Date.UTC(2016, 5, 11, 17, 20, 0)),
-  //     user: {
-  //       _id: 2,
-  //       name: 'El Truco',
-  //       avatar: require('./assets/eltrollo.jpeg'),
-  //     },
-  //   },
-  // ]);
+  // useFocusEffect(
+  //   React.useCallback(() => {
+  //     navigation.navigate('Home');
+  //   }, [])
+  // );
 
   // useEffect(() => {
   //   setMessages([
@@ -76,16 +66,20 @@ const ChatScreen = ({ messagesInput = [] }: ChatScreenProps) => {
   //   ]);
   // }, []);
 
-  const onSend = useCallback((messages = []) => {
+  const onSend = useCallback((newMessages = []) => {
     setMessages((previousMessages) =>
-      GiftedChat.append(previousMessages, messages)
+      GiftedChat.append(previousMessages, newMessages)
     );
+    console.log(newMessages);
   }, []);
 
   return (
     <GiftedChat
       messages={messages}
-      onSend={(messages) => onSend(messages)}
+      onSend={(newMessages) => {
+        onSend(newMessages);
+        onMessageRetrieval([...newMessages, ...messages]);
+      }}
       user={{
         _id: 1,
       }}

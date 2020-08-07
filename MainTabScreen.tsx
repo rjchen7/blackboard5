@@ -68,10 +68,10 @@ const MainTabScreen: FunctionComponent<Props> = ({
   return (
     <Tab.Navigator
       initialRouteName='Home'
-      activeColor='#fff'
+      activeColor='#f8f8f8'
       inactiveColor='grey'
       shifting={true}
-      barStyle={{ backgroundColor: 'black' }}>
+      barStyle={{ backgroundColor: '#1A1919' }}>
       <Tab.Screen
         name='Home'
         options={{
@@ -105,6 +105,7 @@ const MainTabScreen: FunctionComponent<Props> = ({
             {...props}
             DMList={DMList}
             messagesMap={messagesMap}
+            onMessageRetrieval={handleMessageRetrieval}
             chatId={chatId}
             chatName={chatName}
             onSetChatId={setChatId}

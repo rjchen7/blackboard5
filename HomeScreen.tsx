@@ -5,6 +5,7 @@ import ScrollComponent from './components/ScrollComponent';
 import { Roommate, DMUser } from './App';
 import ProfileComponent from './components/PotentialListComponent';
 import ProfilePopup, { Description } from './ProfilePopup';
+import { StackActions } from '@react-navigation/native';
 
 type Props = {
   navigation: any;
@@ -125,6 +126,7 @@ const HomeScreen: FunctionComponent<Props> = ({
             onSetChatId(1);
             onSetChatName('El Truco');
             navigation.navigate('DM');
+            navigation.dispatch(StackActions.push('Chat'));
           }}
         />
         <ScrollComponent
@@ -155,6 +157,7 @@ const HomeScreen: FunctionComponent<Props> = ({
             onSetChatId(2);
             onSetChatName('Rue Grandpa');
             navigation.navigate('DM');
+            navigation.dispatch(StackActions.push('Chat'));
           }}
         />
         <ScrollComponent
@@ -185,6 +188,7 @@ const HomeScreen: FunctionComponent<Props> = ({
             onSetChatId(3);
             onSetChatName('2 Chainz');
             navigation.navigate('DM');
+            navigation.dispatch(StackActions.push('Chat'));
           }}
         />
       </Content>

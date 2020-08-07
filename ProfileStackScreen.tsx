@@ -21,13 +21,15 @@ const ProfileStackScreen: FunctionComponent<any> = ({ navigation }) => {
   return (
     <ProfileStack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: 'black' },
+        headerStyle: { backgroundColor: '#1A1919' },
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontFamily: 'Billabong',
+          fontSize: 35,
+          color: '#f8f8ff',
         },
-      }}
-    >
+      }}>
       <ProfileStack.Screen
         name='Profile'
         component={ProfileScreen}
@@ -37,9 +39,8 @@ const ProfileStackScreen: FunctionComponent<any> = ({ navigation }) => {
             <Icon.Button
               name='ios-menu'
               size={25}
-              backgroundColor='black'
-              onPress={() => navigation.openDrawer()}
-            ></Icon.Button>
+              backgroundColor='#1A1919'
+              onPress={() => navigation.openDrawer()}></Icon.Button>
           ),
         }}
       />

@@ -1,16 +1,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
+import { ImageSourcePropType } from 'react-native';
 
 import MainTabScreen from './MainTabScreen';
 import DrawerContent from './DrawerContent';
-import PotentialRoommates from './PotentialRoommates';
-import PotentialHousing from './PotentialHousing';
-import SupportScreen from './SupportScreen';
-import SettingsScreen from './SettingsScreen';
-import { ImageSourcePropType } from 'react-native';
-import ChatScreen from './ChatScreen';
-import { Item } from 'react-native-paper/lib/typescript/src/components/List/List';
 import LoginScreen from './LoginScreen';
 
 const Drawer = createDrawerNavigator();
@@ -32,12 +28,20 @@ export type ID = {
   Password: string;
 };
 
+const getFonts = () => {
+  return Font.loadAsync({
+    Billabong: require('./assets/fonts/Billabong.ttf'),
+  });
+};
+
 const App = () => {
   // const roomies = React.createContext([]);
   const [userPass, setUserPass] = React.useState<ID>({
     Username: '',
     Password: '',
   });
+
+  const [fontsLoaded, setFontsLoaded] = React.useState(false);
 
   const [potentials, setPotentials] = React.useState<Array<Roommate>>([]);
 
@@ -59,40 +63,46 @@ const App = () => {
     setPotentials(potentials.filter((potential) => potential.Name !== Name));
   };
 
-  return (
-    <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName='Login'
-        drawerContent={(props) => (
-          <DrawerContent
-            {...props}
-            potentials={potentials}
-            onPotentialRemove={removeListing}
-            setUserPass={setUserPass}
-          />
-        )}>
-        <Drawer.Screen name='Login'>
-          {(props) => (
-            <LoginScreen
+  if (fontsLoaded) {
+    return (
+      <NavigationContainer>
+        <Drawer.Navigator
+          initialRouteName='Login'
+          drawerContent={(props) => (
+            <DrawerContent
               {...props}
-              userPass={userPass}
+              potentials={potentials}
+              onPotentialRemove={removeListing}
               setUserPass={setUserPass}
             />
-          )}
-        </Drawer.Screen>
-        <Drawer.Screen name='HomeDrawer'>
-          {(props) => (
-            <MainTabScreen
-              {...props}
-              onPotentialAdd={handlePotentialAdd}
-              onDMListAdd={handleDMListAdd}
-              DMList={DMList}
-            />
-          )}
-        </Drawer.Screen>
-      </Drawer.Navigator>
-    </NavigationContainer>
-  );
+          )}>
+          <Drawer.Screen name='Login'>
+            {(props) => (
+              <LoginScreen
+                {...props}
+                userPass={userPass}
+                setUserPass={setUserPass}
+              />
+            )}
+          </Drawer.Screen>
+          <Drawer.Screen name='HomeDrawer'>
+            {(props) => (
+              <MainTabScreen
+                {...props}
+                onPotentialAdd={handlePotentialAdd}
+                onDMListAdd={handleDMListAdd}
+                DMList={DMList}
+              />
+            )}
+          </Drawer.Screen>
+        </Drawer.Navigator>
+      </NavigationContainer>
+    );
+  } else {
+    return (
+      <AppLoading startAsync={getFonts} onFinish={() => setFontsLoaded(true)} />
+    );
+  }
 };
 
 export default App;
