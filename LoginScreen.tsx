@@ -22,7 +22,7 @@ const LoginScreen: FunctionComponent<Props> = ({
   setUserPass,
 }) => {
   const Authenticate = ({ Username, Password }: ID) => {
-    if (Username == 'RyansMaster' && Password == 'crunch22') {
+    if (Username == 'BlackboardCrew' && Password == 'crunch22') {
       navigation.navigate('HomeDrawer');
     } else {
       alert('Incorrect Username or Password');
@@ -56,12 +56,14 @@ const LoginScreen: FunctionComponent<Props> = ({
       <View style={styles.btnContainer}>
         <TouchableOpacity
           style={styles.userBtn}
-          onPress={() => Authenticate(userPass)}>
+          onPress={() => Authenticate(userPass)}
+        >
           <Text style={styles.btnTxt}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.userBtn}
-          onPress={() => alert('Signup not available for demo.')}>
+          onPress={() => alert('Signup not available for demo.')}
+        >
           <Text style={styles.btnTxt}>Sign Up</Text>
         </TouchableOpacity>
       </View>

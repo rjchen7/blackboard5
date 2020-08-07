@@ -53,7 +53,7 @@ const DrawerContent: FunctionComponent<Props> = ({
               />
               <View style={{ marginLeft: 15, flexDirection: 'column' }}>
                 <Title style={styles.title}>Andy Wu</Title>
-                <Caption style={styles.caption}>@RyansMaster</Caption>
+                <Caption style={styles.caption}>@BlackboardCrew</Caption>
               </View>
             </View>
 
