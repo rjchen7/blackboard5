@@ -76,26 +76,6 @@ const HomeScreen: FunctionComponent<Props> = ({
   onSetChatName,
 }) => {
   const [profilePopupVisible, setProfilePopupVisible] = React.useState(false);
-  // let images = [
-  //   [
-  //     require('./assets/rookie.jpeg'),
-  //     require('./assets/scibowl.jpeg'),
-  //     require('./assets/cook.jpeg'),
-  //     require('./assets/crewshot.jpeg'),
-  //   ],
-  //   [
-  //     require('./assets/rookie.jpeg'),
-  //     require('./assets/boomer2g.png'),
-  //     require('./assets/imdifferent.jpeg'),
-  //     require('./assets/unclesam.jpeg'),
-  //   ],
-  //   [
-  //     require('./assets/rookie.jpeg'),
-  //     require('./assets/scibowl.jpeg'),
-  //     require('./assets/cook.jpeg'),
-  //     require('./assets/crewshot.jpeg'),
-  //   ],
-  // ];
 
   const [profileData, setProfileData] = React.useState({
     Name: 'Test',

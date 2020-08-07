@@ -27,17 +27,6 @@ export type DMUser = {
   Thumb: ImageSourcePropType;
 };
 
-// array of potential roommates
-// let potentials: Roommate[] = [
-//   {
-//     Name: 'El Truco',
-//     Date: 'August 1, 2021',
-//     Thumb: require('./assets/boomer2g.png'),
-//   },
-// ];
-
-// const PotentialContext = React.createContext<Array<Roommate>>([]);
-
 const App = () => {
   // const roomies = React.createContext([]);
   const [potentials, setPotentials] = React.useState<Array<Roommate>>([]);
@@ -50,11 +39,14 @@ const App = () => {
   };
 
   const handlePotentialAdd = ({ Name, Date, Thumb }: Roommate) => {
-    setPotentials([{ Name, Date, Thumb }, ...potentials]);
+    const filterArray = potentials.filter(
+      (potential) => potential.Name !== Name
+    );
+    setPotentials([{ Name, Date, Thumb }, ...filterArray]);
   };
 
   const removeListing = (Name: String) => {
-    setPotentials(potentials.filter((item) => item.Name !== Name));
+    setPotentials(potentials.filter((potential) => potential.Name !== Name));
   };
 
   return (

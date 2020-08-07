@@ -121,8 +121,7 @@ const DrawerContent: FunctionComponent<any> = ({
             <TouchableRipple
               onPress={() => {
                 toggleTheme();
-              }}
-            >
+              }}>
               <View style={styles.preference}>
                 <Text>Dark Mode</Text>
                 <View pointerEvents='none'>
