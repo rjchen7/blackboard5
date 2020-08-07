@@ -9,6 +9,7 @@ import DMScreen from './DMScreen';
 import ChatScreen from './ChatScreen';
 import { DMUser } from './App';
 import { Message } from './MainTabScreen';
+import { AppLoading } from 'expo';
 import { useIsFocused } from '@react-navigation/native';
 
 type Props = {
@@ -35,6 +36,8 @@ const DMStackScreen: FunctionComponent<Props> = ({
   onSetChatName,
 }) => {
   // if 0 then load the DmScreen, if any number then load the chat screen associated with the Id
+
+  // const [chatScreenLoaded, setChatScreenLoaded] = React.useState(false);
 
   const renderChatScreen = () => {
     return (

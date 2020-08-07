@@ -71,8 +71,7 @@ const MainTabScreen: FunctionComponent<Props> = ({
       activeColor='#f8f8f8'
       inactiveColor='grey'
       shifting={true}
-      barStyle={{ backgroundColor: '#1A1919' }}
-    >
+      barStyle={{ backgroundColor: '#1A1919' }}>
       <Tab.Screen
         name='Home'
         options={{
@@ -81,8 +80,7 @@ const MainTabScreen: FunctionComponent<Props> = ({
             // dont really understand this
             <Icon name='ios-home' color={color} size={26} />
           ),
-        }}
-      >
+        }}>
         {(props) => (
           <HomeStackScreen
             {...props}
@@ -97,12 +95,11 @@ const MainTabScreen: FunctionComponent<Props> = ({
       <Tab.Screen
         name='DM'
         options={{
-          tabBarLabel: 'DMs',
+          tabBarLabel: "DM's",
           tabBarIcon: ({ color }) => (
             <Icon name='ios-beer' color={color} size={26} />
           ),
-        }}
-      >
+        }}>
         {(props) => (
           <DMStackScreen
             {...props}

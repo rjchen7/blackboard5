@@ -125,8 +125,7 @@ const HomeScreen: FunctionComponent<Props> = ({
             });
             onSetChatId(1);
             onSetChatName('El Truco');
-            navigation.navigate('DM');
-            navigation.dispatch(StackActions.push('Chat'));
+            navigation.navigate('DM', { screen: 'Chat' });
           }}
         />
         <ScrollComponent
@@ -156,8 +155,7 @@ const HomeScreen: FunctionComponent<Props> = ({
             });
             onSetChatId(2);
             onSetChatName('Rue Grandpa');
-            navigation.navigate('DM');
-            navigation.dispatch(StackActions.push('Chat'));
+            navigation.navigate('DM', { screen: 'Chat' });
           }}
         />
         <ScrollComponent
@@ -187,8 +185,7 @@ const HomeScreen: FunctionComponent<Props> = ({
             });
             onSetChatId(3);
             onSetChatName('2 Chainz');
-            navigation.navigate('DM');
-            navigation.dispatch(StackActions.push('Chat'));
+            navigation.navigate('DM', { screen: 'Chat' });
           }}
         />
       </Content>
