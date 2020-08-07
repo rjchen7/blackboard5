@@ -21,11 +21,25 @@ export type ProfileData = {
   Description: Description;
 };
 
-let images = [
+let images1 = [
   require('./assets/rookie.jpeg'),
   require('./assets/scibowl.jpeg'),
   require('./assets/cook.jpeg'),
-  require('./assets/crewshot.jpeg'),
+  require('./assets/imdifferent.jpeg'),
+];
+
+let images2 = [
+  require('./assets/rookie.jpeg'),
+  require('./assets/scibowl.jpeg'),
+  require('./assets/cook.jpeg'),
+  require('./assets/imdifferent.jpeg'),
+];
+
+let images3 = [
+  require('./assets/rookie.jpeg'),
+  require('./assets/scibowl.jpeg'),
+  require('./assets/cook.jpeg'),
+  require('./assets/rookie.jpeg'),
 ];
 
 const HomeScreen: FunctionComponent<Props> = ({
@@ -36,17 +50,31 @@ const HomeScreen: FunctionComponent<Props> = ({
   onSetChatName,
 }) => {
   const [profilePopupVisible, setProfilePopupVisible] = React.useState(false);
-  let images = [
-    require('./assets/rookie.jpeg'),
-    require('./assets/scibowl.jpeg'),
-    require('./assets/cook.jpeg'),
-    require('./assets/crewshot.jpeg'),
-  ];
+  // let images = [
+  //   [
+  //     require('./assets/rookie.jpeg'),
+  //     require('./assets/scibowl.jpeg'),
+  //     require('./assets/cook.jpeg'),
+  //     require('./assets/crewshot.jpeg'),
+  //   ],
+  //   [
+  //     require('./assets/rookie.jpeg'),
+  //     require('./assets/boomer2g.png'),
+  //     require('./assets/imdifferent.jpeg'),
+  //     require('./assets/unclesam.jpeg'),
+  //   ],
+  //   [
+  //     require('./assets/rookie.jpeg'),
+  //     require('./assets/scibowl.jpeg'),
+  //     require('./assets/cook.jpeg'),
+  //     require('./assets/crewshot.jpeg'),
+  //   ],
+  // ];
 
   const [profileData, setProfileData] = React.useState({
     Name: 'Test',
     Thumb: require('./assets/boomer2g.png'),
-    Images: images,
+    Images: images2,
     Description: {
       Bio: 'Penis',
       SleepSchedule: 'Pussy',
@@ -77,6 +105,7 @@ const HomeScreen: FunctionComponent<Props> = ({
             })
           }
           modalOpen={profilePopupVisible}
+          images={images1}
           onClose={() => setProfilePopupVisible(false)}
           onProfilePress={() => setProfilePopupVisible(true)}
           onSetProfileData={setProfileData}
@@ -105,6 +134,7 @@ const HomeScreen: FunctionComponent<Props> = ({
             })
           }
           modalOpen={profilePopupVisible}
+          images={images2}
           onClose={() => setProfilePopupVisible(false)}
           onProfilePress={() => setProfilePopupVisible(true)}
           onSetProfileData={setProfileData}
@@ -133,6 +163,7 @@ const HomeScreen: FunctionComponent<Props> = ({
             })
           }
           modalOpen={profilePopupVisible}
+          images={images3}
           onClose={() => setProfilePopupVisible(false)}
           onProfilePress={() => setProfilePopupVisible(true)}
           onSetProfileData={setProfileData}

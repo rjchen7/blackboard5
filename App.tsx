@@ -9,6 +9,8 @@ import PotentialHousing from './PotentialHousing';
 import SupportScreen from './SupportScreen';
 import SettingsScreen from './SettingsScreen';
 import { ImageSourcePropType } from 'react-native';
+import ChatScreen from './ChatScreen';
+import { Item } from 'react-native-paper/lib/typescript/src/components/List/List';
 
 const Drawer = createDrawerNavigator();
 
@@ -42,7 +44,8 @@ const App = () => {
   const [DMList, setDMList] = React.useState<Array<DMUser>>([]);
 
   const handleDMListAdd = ({ Id, Name, Thumb }: DMUser) => {
-    setDMList([{ Id, Name, Thumb }, ...DMList]);
+    const filterArray = DMList.filter((message) => message.Id !== Id);
+    setDMList([{ Id, Name, Thumb }, ...filterArray]);
   };
 
   const handlePotentialAdd = ({ Name, Date, Thumb }: Roommate) => {
@@ -63,7 +66,8 @@ const App = () => {
             potentials={potentials}
             onPotentialRemove={removeListing}
           />
-        )}>
+        )}
+      >
         <Drawer.Screen name='HomeDrawer'>
           {(props) => (
             <MainTabScreen
