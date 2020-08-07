@@ -56,7 +56,17 @@ const App = () => {
     const filterArray = potentials.filter(
       (potential) => potential.Name !== Name
     );
+    let added = false;
+    if (filterArray.length < potentials.length) {
+      added = true;
+    }
     setPotentials([{ Name, Date, Thumb }, ...filterArray]);
+
+    if (!added) {
+      alert(Name + ' added to Potential Roommates.');
+    } else {
+      alert(Name + ' is already on Potential Roommates.');
+    }
   };
 
   const removeListing = (Name: String) => {
@@ -75,7 +85,8 @@ const App = () => {
               onPotentialRemove={removeListing}
               setUserPass={setUserPass}
             />
-          )}>
+          )}
+        >
           <Drawer.Screen name='Login'>
             {(props) => (
               <LoginScreen

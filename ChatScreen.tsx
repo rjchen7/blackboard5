@@ -70,7 +70,6 @@ const ChatScreen = ({
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, newMessages)
     );
-    console.log(newMessages);
   }, []);
 
   return (

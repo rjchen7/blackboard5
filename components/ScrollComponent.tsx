@@ -83,7 +83,8 @@ const ScrollComponent: FunctionComponent<Props> = ({
                 Description: Description,
               });
               onProfilePress();
-            }}>
+            }}
+          >
             <Thumbnail source={Thumb} />
           </TouchableOpacity>
           <Body>

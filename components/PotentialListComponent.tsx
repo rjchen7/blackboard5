@@ -38,7 +38,7 @@ const PotentialListComponent: FunctionComponent<Props> = ({
           </Body>
         </Left>
         <Right>
-          <Icon name='logo-no-smoking' onPress={() => removeItemID(Name)} />
+          <Icon name='ios-close-circle' onPress={() => removeItemID(Name)} />
         </Right>
       </CardItem>
     </Card>

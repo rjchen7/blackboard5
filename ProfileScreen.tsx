@@ -268,7 +268,7 @@ const ProfileScreen: FunctionComponent<any> = () => {
             >
               <Icon
                 style={[active == false ? { color: 'teal' } : {}]}
-                name='ios-clipboard'
+                name='md-images'
                 size={30}
               />
             </Button>
@@ -279,7 +279,7 @@ const ProfileScreen: FunctionComponent<any> = () => {
               }}
             >
               <Icon
-                name='ios-expand'
+                name='md-information-circle-outline'
                 style={[active == true ? { color: 'teal' } : {}]}
                 size={30}
               />

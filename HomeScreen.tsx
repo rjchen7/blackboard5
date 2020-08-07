@@ -83,10 +83,10 @@ const HomeScreen: FunctionComponent<Props> = ({
     Thumb: require('./assets/boomer2g.png'),
     Images: images[0],
     Description: {
-      Bio: 'Penis',
-      SleepSchedule: 'Pussy',
-      Habits: 'penis',
-      Activities: 'pussy',
+      Bio: '',
+      SleepSchedule: '',
+      Habits: '',
+      Activities: '',
     },
   });
 

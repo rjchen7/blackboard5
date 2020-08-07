@@ -33,7 +33,7 @@ let messagesMap = new Map();
 messagesMap.set(1, [
   {
     _id: 1,
-    text: 'youre so gay that you can gay the gay',
+    text: 'LNL Tonight?',
     createdAt: new Date(),
     user: {
       _id: 2,
@@ -43,7 +43,7 @@ messagesMap.set(1, [
   },
   {
     _id: 2,
-    text: 'Hello Andy the faggot!',
+    text: 'Hello Andy!',
     createdAt: new Date(Date.UTC(2016, 5, 11, 17, 20, 0)),
     user: {
       _id: 2,
@@ -71,7 +71,8 @@ const MainTabScreen: FunctionComponent<Props> = ({
       activeColor='#f8f8f8'
       inactiveColor='grey'
       shifting={true}
-      barStyle={{ backgroundColor: '#1A1919' }}>
+      barStyle={{ backgroundColor: '#1A1919' }}
+    >
       <Tab.Screen
         name='Home'
         options={{
@@ -80,7 +81,8 @@ const MainTabScreen: FunctionComponent<Props> = ({
             // dont really understand this
             <Icon name='ios-home' color={color} size={26} />
           ),
-        }}>
+        }}
+      >
         {(props) => (
           <HomeStackScreen
             {...props}
@@ -99,7 +101,8 @@ const MainTabScreen: FunctionComponent<Props> = ({
           tabBarIcon: ({ color }) => (
             <Icon name='ios-beer' color={color} size={26} />
           ),
-        }}>
+        }}
+      >
         {(props) => (
           <DMStackScreen
             {...props}

@@ -102,7 +102,9 @@ const DrawerContent: FunctionComponent<Props> = ({
                 <Icon name='bed-empty' color={color} size={size} />
               )}
               label='Potential Housing'
-              onPress={() => {}}
+              onPress={() =>
+                alert('Coming Soon: Google Maps API for housing near you.')
+              }
             />
             <DrawerItem
               icon={({ color, size }) => (
@@ -110,7 +112,7 @@ const DrawerContent: FunctionComponent<Props> = ({
               )}
               label='Settings'
               onPress={() => {
-                navigation.navigate('SettingsScreen');
+                alert('Settings not available for demo.');
               }}
             />
             <DrawerItem
@@ -119,7 +121,7 @@ const DrawerContent: FunctionComponent<Props> = ({
               )}
               label='Support'
               onPress={() => {
-                navigation.navigate('SupportScreen');
+                alert('Call Ryan Chen at 352-317-8118 for support.');
               }}
             />
           </Drawer.Section>
@@ -127,7 +129,8 @@ const DrawerContent: FunctionComponent<Props> = ({
             <TouchableRipple
               onPress={() => {
                 toggleSearch();
-              }}>
+              }}
+            >
               <View style={styles.preference}>
                 <Text>Actively Searching</Text>
                 <View pointerEvents='none'>

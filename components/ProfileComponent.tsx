@@ -57,7 +57,8 @@ const ProfileComponent: FunctionComponent<Info> = ({
     return (
       <SafeAreaView style={styles.container}>
         <Text
-          style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 24 }}>
+          style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 24 }}
+        >
           Preferences
         </Text>
         <Divider style={styles.divider} />
@@ -104,14 +105,16 @@ const ProfileComponent: FunctionComponent<Info> = ({
             paddingLeft: 10,
             paddingBottom: 10,
             paddingRight: 10,
-          }}>
+          }}
+        >
           <View style={{ flexDirection: 'row' }}>
             <View
               style={{
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}>
+              }}
+            >
               <Image source={Thumb} style={styles.profilePicture} />
               <Text style={{ fontWeight: 'bold', paddingTop: 10 }}>{Name}</Text>
             </View>
@@ -125,15 +128,17 @@ const ProfileComponent: FunctionComponent<Info> = ({
               justifyContent: 'space-around',
               borderTopWidth: 1,
               borderTopColor: '#eae5e5',
-            }}>
+            }}
+          >
             <Button
               transparent
               onPress={() => {
                 setActive(false);
-              }}>
+              }}
+            >
               <Icon
                 style={[active == false ? { color: 'teal' } : {}]}
-                name='ios-clipboard'
+                name='md-images'
                 size={30}
               />
             </Button>
@@ -141,9 +146,10 @@ const ProfileComponent: FunctionComponent<Info> = ({
               transparent
               onPress={() => {
                 setActive(true);
-              }}>
+              }}
+            >
               <Icon
-                name='ios-expand'
+                name='md-information-circle-outline'
                 style={[active == true ? { color: 'teal' } : {}]}
                 size={30}
               />
