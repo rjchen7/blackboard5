@@ -16,6 +16,7 @@ import {
   Button,
   Icon,
 } from 'native-base';
+import { Description } from '../ProfilePopup';
 
 // import DMScreen from '../DMScreen';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -30,6 +31,7 @@ type Props = {
   text: string;
   modalOpen: boolean;
   Images: ImageSourcePropType[];
+  Description: Description;
   onClose: () => void;
   addPotential: () => void;
   onProfilePress: () => void;
@@ -59,6 +61,7 @@ const ScrollComponent: FunctionComponent<Props> = ({
   text,
   modalOpen,
   Images,
+  Description,
   // onClose,
   addPotential,
   onProfilePress,
@@ -77,7 +80,7 @@ const ScrollComponent: FunctionComponent<Props> = ({
                 Name: Name,
                 Thumb: Thumb,
                 Images: Images,
-                Description: dummyDescription,
+                Description: Description,
               });
               onProfilePress();
             }}

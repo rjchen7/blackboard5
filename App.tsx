@@ -44,7 +44,7 @@ const App = () => {
   const [DMList, setDMList] = React.useState<Array<DMUser>>([]);
 
   const handleDMListAdd = ({ Id, Name, Thumb }: DMUser) => {
-    const filterArray = DMList.filter((message) => message.Id !== Id);
+    const filterArray = DMList.filter((User) => User.Id !== Id);
     setDMList([{ Id, Name, Thumb }, ...filterArray]);
   };
 

@@ -21,25 +21,51 @@ export type ProfileData = {
   Description: Description;
 };
 
-let images1 = [
-  require('./assets/rookie.jpeg'),
-  require('./assets/boomer2g.png'),
-  require('./assets/cook.jpeg'),
-  require('./assets/imdifferent.jpeg'),
+let images = [
+  [
+    require('./assets/tricka.jpeg'),
+    require('./assets/trickcoffee.jpeg'),
+    require('./assets/tricksavage.jpeg'),
+    require('./assets/trickserious.png'),
+  ],
+  [
+    require('./assets/damnnn.png'),
+    require('./assets/datway.jpeg'),
+    require('./assets/pigubuff.jpeg'),
+    require('./assets/quay.jpeg'),
+  ],
+  [
+    require('./assets/chainzboof.jpeg'),
+    require('./assets/chainzdolla.jpeg'),
+    require('./assets/chainzglasses.jpeg'),
+    require('./assets/chainzjam.jpeg'),
+  ],
 ];
 
-let images2 = [
-  require('./assets/rookie.jpeg'),
-  require('./assets/scibowl.jpeg'),
-  require('./assets/cook.jpeg'),
-  require('./assets/unclesam.jpeg'),
-];
-
-let images3 = [
-  require('./assets/rookie.jpeg'),
-  require('./assets/scibowl.jpeg'),
-  require('./assets/cook.jpeg'),
-  require('./assets/rookie.jpeg'),
+let descriptions = [
+  {
+    Bio:
+      'Baby we back once a mfing gain with the Lawnmower 3.0. My ballsack was wrinkly as hell man, but then I put some ballsack deodorant on and damnnnnn.',
+    SleepSchedule: 'We out here playing 30 hours a day, 7 days a week.',
+    Habits: 'Sometimes Juul, Vodka on Saturday nights.',
+    Activities: 'D Cane and the Dyr in League of Legends.',
+  },
+  {
+    Bio:
+      'They like to call me the sheriff of the West, my donger can wrap around yo neck like 10 times.',
+    SleepSchedule:
+      'I am very lazy and typically like to sleep around 12 hours a day during the most inconvenient times for you.',
+    Habits:
+      'I make the bus explode when I use the restroom, and I will in the room too.',
+    Activities:
+      'None. I do not like doing anything except blowing up the toilet repeatedly and making life devastating for everyone else.',
+  },
+  {
+    Bio: 'They ask me how I do it who I do it for...',
+    SleepSchedule: 'And How I Come up with this shit up in the studiooooo',
+    Habits: 'All I want for my birthday is a...',
+    Activities: 'Best friend that I can have a good ass time with.',
+  },
 ];
 
 const HomeScreen: FunctionComponent<Props> = ({
@@ -74,7 +100,7 @@ const HomeScreen: FunctionComponent<Props> = ({
   const [profileData, setProfileData] = React.useState({
     Name: 'Test',
     Thumb: require('./assets/boomer2g.png'),
-    Images: images2,
+    Images: images[0],
     Description: {
       Bio: 'Penis',
       SleepSchedule: 'Pussy',
@@ -105,7 +131,8 @@ const HomeScreen: FunctionComponent<Props> = ({
             })
           }
           modalOpen={profilePopupVisible}
-          Images={images1}
+          Images={images[0]}
+          Description={descriptions[0]}
           onClose={() => setProfilePopupVisible(false)}
           onProfilePress={() => setProfilePopupVisible(true)}
           onSetProfileData={setProfileData}
@@ -134,7 +161,8 @@ const HomeScreen: FunctionComponent<Props> = ({
             })
           }
           modalOpen={profilePopupVisible}
-          Images={images2}
+          Images={images[1]}
+          Description={descriptions[1]}
           onClose={() => setProfilePopupVisible(false)}
           onProfilePress={() => setProfilePopupVisible(true)}
           onSetProfileData={setProfileData}
@@ -163,7 +191,8 @@ const HomeScreen: FunctionComponent<Props> = ({
             })
           }
           modalOpen={profilePopupVisible}
-          Images={images3}
+          Images={images[2]}
+          Description={descriptions[2]}
           onClose={() => setProfilePopupVisible(false)}
           onProfilePress={() => setProfilePopupVisible(true)}
           onSetProfileData={setProfileData}

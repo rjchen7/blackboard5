@@ -42,10 +42,7 @@ const DrawerContent: FunctionComponent<any> = ({
           <View style={styles.userInfoSection}>
             <View style={{ flexDirection: 'row', marginTop: 15 }}>
               <Avatar.Image
-                source={{
-                  uri:
-                    'https://www.facebook.com/photo.php?fbid=281985798506924&set=pb.100000865197851.-2207520000..&type=3',
-                }}
+                source={require('./assets/datway.jpeg')}
                 size={50}
               />
               <View style={{ marginLeft: 15, flexDirection: 'column' }}>
@@ -124,7 +121,8 @@ const DrawerContent: FunctionComponent<any> = ({
             <TouchableRipple
               onPress={() => {
                 toggleTheme();
-              }}>
+              }}
+            >
               <View style={styles.preference}>
                 <Text>Dark Mode</Text>
                 <View pointerEvents='none'>
@@ -135,7 +133,7 @@ const DrawerContent: FunctionComponent<any> = ({
           </Drawer.Section>
         </View>
       </DrawerContentScrollView>
-      <Drawer.Section style={styles.bottomDrawerSection}>
+      {/* <Drawer.Section style={styles.bottomDrawerSection}>
         <DrawerItem
           icon={({ color, size }) => (
             <Icon name='exit-to-app' color={color} size={size} />
@@ -143,7 +141,7 @@ const DrawerContent: FunctionComponent<any> = ({
           label='Andy is microgang'
           onPress={() => {}}
         />
-      </Drawer.Section>
+      </Drawer.Section> */}
     </View>
   );
 };
