@@ -83,8 +83,7 @@ const ScrollComponent: FunctionComponent<Props> = ({
                 Description: Description,
               });
               onProfilePress();
-            }}
-          >
+            }}>
             <Thumbnail source={Thumb} />
           </TouchableOpacity>
           <Body>
@@ -103,9 +102,6 @@ const ScrollComponent: FunctionComponent<Props> = ({
           </Button>
           <Button transparent onPress={addDMUser}>
             <Icon name='ios-paper-plane' style={{ color: 'black' }} />
-          </Button>
-          <Button transparent>
-            <Icon name='ios-share' style={{ color: 'black' }} />
           </Button>
         </Left>
       </CardItem>

@@ -7,23 +7,27 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import { ID } from './App';
 
-type ID = {
-  Username: string;
-  Password: string;
+type Props = {
+  navigation: any;
+  userPass: ID;
+  setUserPass: React.Dispatch<React.SetStateAction<ID>>;
 };
-const LoginScreen: FunctionComponent<any> = ({ navigation }) => {
-  const Authenicate = ({ Username, Password }: ID) => {
+
+const LoginScreen: FunctionComponent<Props> = ({
+  navigation,
+  userPass,
+  setUserPass,
+}) => {
+  const Authenticate = ({ Username, Password }: ID) => {
     if (Username == 'RyansMaster' && Password == 'crunch22') {
       navigation.navigate('HomeDrawer');
     } else {
       alert('Incorrect Username or Password');
     }
   };
-  const [userPass, setUserPass] = React.useState({
-    Username: '',
-    Password: '',
-  });
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <TextInput
@@ -44,14 +48,12 @@ const LoginScreen: FunctionComponent<any> = ({ navigation }) => {
       <View style={styles.btnContainer}>
         <TouchableOpacity
           style={styles.userBtn}
-          onPress={() => Authenicate(userPass)}
-        >
+          onPress={() => Authenticate(userPass)}>
           <Text style={styles.btnTxt}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.userBtn}
-          onPress={() => alert('Signup not available for demo.')}
-        >
+          onPress={() => alert('Signup not available for demo.')}>
           <Text style={styles.btnTxt}>Sign Up</Text>
         </TouchableOpacity>
       </View>

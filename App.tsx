@@ -27,8 +27,18 @@ export type DMUser = {
   Thumb: ImageSourcePropType;
 };
 
+export type ID = {
+  Username: string;
+  Password: string;
+};
+
 const App = () => {
   // const roomies = React.createContext([]);
+  const [userPass, setUserPass] = React.useState<ID>({
+    Username: '',
+    Password: '',
+  });
+
   const [potentials, setPotentials] = React.useState<Array<Roommate>>([]);
 
   const [DMList, setDMList] = React.useState<Array<DMUser>>([]);
@@ -58,9 +68,18 @@ const App = () => {
             {...props}
             potentials={potentials}
             onPotentialRemove={removeListing}
+            setUserPass={setUserPass}
           />
         )}>
-        <Drawer.Screen name='Login' component={LoginScreen} />
+        <Drawer.Screen name='Login'>
+          {(props) => (
+            <LoginScreen
+              {...props}
+              userPass={userPass}
+              setUserPass={setUserPass}
+            />
+          )}
+        </Drawer.Screen>
         <Drawer.Screen name='HomeDrawer'>
           {(props) => (
             <MainTabScreen

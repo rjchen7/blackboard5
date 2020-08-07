@@ -13,14 +13,20 @@ import {
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PotentialRoommates from './PotentialRoommates';
-import { Roommate } from './App';
+import { Roommate, ID } from './App';
 
-//{...props}
+type Props = {
+  navigation: any;
+  potentials: Roommate[];
+  onPotentialRemove: (Name: String) => void;
+  setUserPass: React.Dispatch<React.SetStateAction<ID>>;
+};
 
-const DrawerContent: FunctionComponent<any> = ({
+const DrawerContent: FunctionComponent<Props> = ({
   navigation,
   potentials,
   onPotentialRemove,
+  setUserPass,
 }) => {
   // creating state isDarkTheme
   const [isDarkTheme, setIsDarkTheme] = React.useState(false);
@@ -139,6 +145,7 @@ const DrawerContent: FunctionComponent<any> = ({
           )}
           label='Logout'
           onPress={() => {
+            setUserPass({ Username: '', Password: '' });
             navigation.navigate('Login');
           }}
         />
@@ -192,9 +199,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
 });
-
-type Props = {
-  potentials: Roommate[];
-};
 
 export default DrawerContent;
