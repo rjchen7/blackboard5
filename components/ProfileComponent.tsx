@@ -96,7 +96,7 @@ const ProfileComponent: FunctionComponent<Info> = ({
     }
   };
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{ flex: 1, backgroundColor: '#f8f8ff' }}>
       <View>
         <View
           style={{

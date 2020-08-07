@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import ProfileComponent from './components/ProfileComponent';
 import { ProfileData } from './HomeScreen';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export type Description = {
   Bio: string;
@@ -29,8 +30,15 @@ const ProfilePopup = ({ modalOpen, onClose, profileData }: Props) => {
       visible={modalOpen}
       animationType='slide'
       presentationStyle='pageSheet'>
-      <View>
-        <Button title='x' onPress={onClose} />
+      <View style={styles.container}>
+        <Icon
+          style={styles.modalToggle}
+          name='ios-arrow-down'
+          size={24}
+          onPress={() => {
+            onClose();
+          }}
+        />
       </View>
       <ProfileComponent
         Name={profileData.Name}
@@ -41,5 +49,15 @@ const ProfilePopup = ({ modalOpen, onClose, profileData }: Props) => {
     </Modal>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#f8f8ff',
+  },
+  modalToggle: {
+    padding: 10,
+    alignSelf: 'center',
+  },
+});
 
 export default ProfilePopup;
