@@ -39,17 +39,19 @@ const ChatScreen = ({
   messagesInput = [],
   onMessageRetrieval,
 }: ChatScreenProps) => {
-  const [messages, setMessages] = React.useState(messagesInput);
+  const [messages, setMessages] = React.useState([]);
+
+  console.log(messagesInput);
 
   // if (useIsFocused() == false) {
   //   navigation.
   // }
 
-  // useFocusEffect(
-  //   React.useCallback(() => {
-  //     navigation.navigate('Home');
-  //   }, [])
-  // );
+  useFocusEffect(
+    React.useCallback(() => {
+      setMessages(messagesInput);
+    }, [])
+  );
 
   // useEffect(() => {
   //   setMessages([

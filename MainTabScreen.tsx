@@ -53,6 +53,9 @@ messagesMap.set(1, [
   },
 ]);
 
+messagesMap.set(2, []);
+messagesMap.set(3, []);
+
 const MainTabScreen: FunctionComponent<Props> = ({
   onPotentialAdd,
   onDMListAdd,
@@ -64,6 +67,8 @@ const MainTabScreen: FunctionComponent<Props> = ({
   const handleMessageRetrieval = (messages: Message[]) => {
     messagesMap.set(chatId, messages);
   };
+
+  console.log(chatId);
 
   return (
     <Tab.Navigator
@@ -104,9 +109,8 @@ const MainTabScreen: FunctionComponent<Props> = ({
           <DMStackScreen
             {...props}
             DMList={DMList}
-            messagesMap={messagesMap}
+            messages={messagesMap.get(chatId)}
             onMessageRetrieval={handleMessageRetrieval}
-            chatId={chatId}
             chatName={chatName}
             onSetChatId={setChatId}
             onSetChatName={setChatName}

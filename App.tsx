@@ -85,8 +85,7 @@ const App = () => {
               onPotentialRemove={removeListing}
               setUserPass={setUserPass}
             />
-          )}
-        >
+          )}>
           <Drawer.Screen name='Login'>
             {(props) => (
               <LoginScreen

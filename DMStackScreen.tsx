@@ -15,9 +15,8 @@ import { useIsFocused } from '@react-navigation/native';
 type Props = {
   navigation: any;
   DMList: DMUser[];
-  messagesMap: Map<number, Message[]>;
+  messages: Message[];
   onMessageRetrieval: (messages: Message[]) => void;
-  chatId: number;
   chatName: string;
   onSetChatId: React.Dispatch<React.SetStateAction<number>>;
   onSetChatName: React.Dispatch<React.SetStateAction<string>>;
@@ -28,9 +27,8 @@ const DMStack = createStackNavigator();
 const DMStackScreen: FunctionComponent<Props> = ({
   navigation,
   DMList,
-  messagesMap,
+  messages,
   onMessageRetrieval,
-  chatId,
   chatName,
   onSetChatId,
   onSetChatName,
@@ -40,10 +38,11 @@ const DMStackScreen: FunctionComponent<Props> = ({
   // const [chatScreenLoaded, setChatScreenLoaded] = React.useState(false);
 
   const renderChatScreen = () => {
+    console.log(messages);
     return (
       <ChatScreen
         navigation={navigation}
-        messagesInput={messagesMap.get(chatId) || []}
+        messagesInput={messages}
         onMessageRetrieval={onMessageRetrieval}
       />
     );
