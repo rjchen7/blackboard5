@@ -1,5 +1,4 @@
-import React, { useEffect, useCallback, FunctionComponent } from 'react';
-import { GiftedChat, Bubble, BubbleProps } from 'react-native-gifted-chat';
+import React, { FunctionComponent } from 'react';
 import {
   View,
   Text,
@@ -42,6 +41,7 @@ const DMScreen: FunctionComponent<Props> = ({
   }> = ({ navigate, Id, name, thumb }) => (
     <TouchableOpacity
       onPress={() => {
+        console.log('DMScreen Id: ' + Id);
         onSetChatId(Id);
         onSetChatName(name);
         navigate();

@@ -1,13 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  Modal,
-  SafeAreaView,
-  ImageSourcePropType,
-} from 'react-native';
+import { View, Text, StyleSheet, Modal, SafeAreaView } from 'react-native';
 import { Container, Content } from 'native-base';
 
 import Icon from 'react-native-vector-icons/Ionicons';

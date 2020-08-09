@@ -1,4 +1,4 @@
-import React, { FunctionComponent, SetStateAction, Dispatch } from 'react';
+import React, { FunctionComponent } from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -38,7 +38,7 @@ messagesMap.set(1, [
     user: {
       _id: 2,
       name: 'El Truco',
-      avatar: require('./assets/eltrollo.jpeg'),
+      avatar: require('./assets/boomer2g.png'),
     },
   },
   {
@@ -48,12 +48,23 @@ messagesMap.set(1, [
     user: {
       _id: 2,
       name: 'El Truco',
-      avatar: require('./assets/eltrollo.jpeg'),
+      avatar: require('./assets/boomer2g.png'),
     },
   },
 ]);
-
-messagesMap.set(2, []);
+messagesMap.set(2, [
+  {
+    _id: 1,
+    text:
+      'Hey Andy, I heard youre gay and I really am too. Do you want to meet up?',
+    createdAt: new Date(),
+    user: {
+      _id: 2,
+      name: 'Rue Grandpa',
+      avatar: require('./assets/thegang.jpg'),
+    },
+  },
+]);
 messagesMap.set(3, []);
 
 const MainTabScreen: FunctionComponent<Props> = ({
@@ -63,12 +74,6 @@ const MainTabScreen: FunctionComponent<Props> = ({
 }) => {
   const [chatId, setChatId] = React.useState(0);
   const [chatName, setChatName] = React.useState('Rick');
-
-  const handleMessageRetrieval = (messages: Message[]) => {
-    messagesMap.set(chatId, messages);
-  };
-
-  console.log(chatId);
 
   return (
     <Tab.Navigator
@@ -109,8 +114,8 @@ const MainTabScreen: FunctionComponent<Props> = ({
           <DMStackScreen
             {...props}
             DMList={DMList}
-            messages={messagesMap.get(chatId)}
-            onMessageRetrieval={handleMessageRetrieval}
+            messagesMap={messagesMap}
+            chatId={chatId}
             chatName={chatName}
             onSetChatId={setChatId}
             onSetChatName={setChatName}

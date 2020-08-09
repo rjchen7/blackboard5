@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactElement } from 'react';
+import React, { FunctionComponent } from 'react';
 import {
   createStackNavigator,
   HeaderBackButton,
@@ -9,14 +9,13 @@ import DMScreen from './DMScreen';
 import ChatScreen from './ChatScreen';
 import { DMUser } from './App';
 import { Message } from './MainTabScreen';
-import { AppLoading } from 'expo';
-import { useIsFocused } from '@react-navigation/native';
 
 type Props = {
   navigation: any;
+  route: any;
   DMList: DMUser[];
-  messages: Message[];
-  onMessageRetrieval: (messages: Message[]) => void;
+  messagesMap: Map<number, Message[]>;
+  chatId: number;
   chatName: string;
   onSetChatId: React.Dispatch<React.SetStateAction<number>>;
   onSetChatName: React.Dispatch<React.SetStateAction<string>>;
@@ -27,25 +26,14 @@ const DMStack = createStackNavigator();
 const DMStackScreen: FunctionComponent<Props> = ({
   navigation,
   DMList,
-  messages,
-  onMessageRetrieval,
+  messagesMap,
+  chatId,
   chatName,
   onSetChatId,
   onSetChatName,
 }) => {
-  // if 0 then load the DmScreen, if any number then load the chat screen associated with the Id
-
-  // const [chatScreenLoaded, setChatScreenLoaded] = React.useState(false);
-
   const renderChatScreen = () => {
-    console.log(messages);
-    return (
-      <ChatScreen
-        navigation={navigation}
-        messagesInput={messages}
-        onMessageRetrieval={onMessageRetrieval}
-      />
-    );
+    return <ChatScreen chatId={chatId} messagesMap={messagesMap} />;
   };
 
   return (

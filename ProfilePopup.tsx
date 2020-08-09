@@ -1,12 +1,5 @@
-import React, { FunctionComponent, Dispatch, SetStateAction } from 'react';
-import {
-  StyleSheet,
-  ImageSourcePropType,
-  Modal,
-  View,
-  Text,
-  Button,
-} from 'react-native';
+import React from 'react';
+import { StyleSheet, Modal, View } from 'react-native';
 import ProfileComponent from './components/ProfileComponent';
 import { ProfileData } from './HomeScreen';
 import Icon from 'react-native-vector-icons/Ionicons';

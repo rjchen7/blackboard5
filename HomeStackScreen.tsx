@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import HomeScreen from './HomeScreen';
 import { DMUser, Roommate } from './App';
+import { Message } from './MainTabScreen';
 
 // the reason it is navigation.navigate('DM') is because in the DMStackScreen component it is named DM
 

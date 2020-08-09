@@ -1,11 +1,9 @@
-import React, { FunctionComponent, Dispatch, SetStateAction } from 'react';
+import React, { FunctionComponent } from 'react';
 import { StyleSheet, View, ImageSourcePropType } from 'react-native';
 import { Container, Content } from 'native-base';
 import ScrollComponent from './components/ScrollComponent';
 import { Roommate, DMUser } from './App';
-import ProfileComponent from './components/PotentialListComponent';
 import ProfilePopup, { Description } from './ProfilePopup';
-import { StackActions } from '@react-navigation/native';
 
 type Props = {
   navigation: any;
@@ -127,7 +125,9 @@ const HomeScreen: FunctionComponent<Props> = ({
             onSetChatName('El Truco');
             // navigation.navigate('DM', { screen: 'Chat' });
             // why does navigation.navigate('Chat') cause an error the first time
-            navigation.navigate('DM', { screen: 'Chat' });
+            navigation.navigate('DM', {
+              screen: 'Chat',
+            });
           }}
         />
         <ScrollComponent
@@ -157,7 +157,9 @@ const HomeScreen: FunctionComponent<Props> = ({
             });
             onSetChatId(2);
             onSetChatName('Rue Grandpa');
-            navigation.navigate('DM', { screen: 'Chat' });
+            navigation.navigate('DM', {
+              screen: 'Chat',
+            });
           }}
         />
         <ScrollComponent
@@ -187,7 +189,9 @@ const HomeScreen: FunctionComponent<Props> = ({
             });
             onSetChatId(3);
             onSetChatName('2 Chainz');
-            navigation.navigate('DM', { screen: 'Chat' });
+            navigation.navigate('DM', {
+              screen: 'Chat',
+            });
           }}
         />
       </Content>

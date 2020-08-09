@@ -3,10 +3,8 @@ import {
   StyleSheet,
   View,
   Text,
-  Button,
   TextInput,
   TouchableOpacity,
-  ImageBackground,
 } from 'react-native';
 import { ID } from './App';
 
@@ -37,10 +35,10 @@ const LoginScreen: FunctionComponent<Props> = ({
       <View style={{ justifyContent: 'center' }}>
         <Text style={styles.title}>Blackboard</Text>
       </View>
-
       <TextInput
         style={styles.input}
         placeholder='Username'
+        value={userPass.Username}
         onChangeText={(user) =>
           setUserPass({ Username: user, Password: userPass.Password })
         }
@@ -48,6 +46,7 @@ const LoginScreen: FunctionComponent<Props> = ({
       <TextInput
         style={styles.input}
         placeholder='Password'
+        value={userPass.Password}
         secureTextEntry
         onChangeText={(pass) =>
           setUserPass({ Username: userPass.Username, Password: pass })
@@ -56,14 +55,12 @@ const LoginScreen: FunctionComponent<Props> = ({
       <View style={styles.btnContainer}>
         <TouchableOpacity
           style={styles.userBtn}
-          onPress={() => Authenticate(userPass)}
-        >
+          onPress={() => Authenticate(userPass)}>
           <Text style={styles.btnTxt}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.userBtn}
-          onPress={() => alert('Signup not available for demo.')}
-        >
+          onPress={() => alert('Signup not available for demo.')}>
           <Text style={styles.btnTxt}>Sign Up</Text>
         </TouchableOpacity>
       </View>

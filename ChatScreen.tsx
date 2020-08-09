@@ -1,13 +1,10 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { Bubble, GiftedChat } from 'react-native-gifted-chat';
 import { Message } from './MainTabScreen';
-import { View } from 'react-native';
-import { useFocusEffect, useIsFocused } from '@react-navigation/native';
 
 type ChatScreenProps = {
-  navigation: any;
-  messagesInput: Message[];
-  onMessageRetrieval: (messages: Message[]) => void;
+  chatId: number;
+  messagesMap: Map<number, Message[]>;
 };
 
 const renderBubble: FunctionComponent<any> = (props) => {
@@ -34,39 +31,10 @@ const renderBubble: FunctionComponent<any> = (props) => {
   );
 };
 
-const ChatScreen = ({
-  navigation,
-  messagesInput = [],
-  onMessageRetrieval,
-}: ChatScreenProps) => {
+const ChatScreen = ({ chatId, messagesMap }: ChatScreenProps) => {
+  console.log(messagesMap.get(chatId));
+
   const [messages, setMessages] = React.useState([]);
-
-  console.log(messagesInput);
-
-  // if (useIsFocused() == false) {
-  //   navigation.
-  // }
-
-  useFocusEffect(
-    React.useCallback(() => {
-      setMessages(messagesInput);
-    }, [])
-  );
-
-  // useEffect(() => {
-  //   setMessages([
-  //     {
-  //       _id: 1,
-  //       text: 'Hello Andy the faggot!',
-  //       createdAt: new Date(),
-  //       user: {
-  //         _id: 2,
-  //         name: 'React Native',
-  //         avatar: require('./assets/eltrollo.jpeg'),
-  //       },
-  //     },
-  //   ]);
-  // }, []);
 
   const onSend = useCallback((newMessages = []) => {
     setMessages((previousMessages) =>
@@ -76,10 +44,13 @@ const ChatScreen = ({
 
   return (
     <GiftedChat
-      messages={messages}
+      messages={messagesMap.get(chatId)}
       onSend={(newMessages) => {
         onSend(newMessages);
-        onMessageRetrieval([...newMessages, ...messages]);
+        messagesMap.set(chatId, [
+          ...newMessages,
+          ...(messagesMap.get(chatId) || []),
+        ]);
       }}
       user={{
         _id: 1,
